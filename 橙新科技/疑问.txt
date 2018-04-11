@@ -14,3 +14,9 @@ NEWS("news", "newsConvertStrategyNews"),  //资讯
 
 
 setReviewSensitiveShieldWord
+
+5.段子添加之后没显示
+6.Jenis konten内容类型和Buka ragam开放品种 2个字段是否不需要在excel中出现，默认是Paragraf段子
+
+7.段子添加之后的立刻刷新会查询不出来，需要再查询一下
+8.段子edit失败，有错误但没有错误提示
