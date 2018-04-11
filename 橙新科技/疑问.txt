@@ -1,0 +1,16 @@
+1.咨询管理：怎样检查出内容中的敏感词，有现有接口吗？
+
+2.咨询管理：在打开咨询详情的接口的返回值中加入敏感词列表一起返回吗？
+
+3.为什么会有多个NewsController，appserver的不同包里面有2个NewsController
+
+4.为什么添加了一个新闻，添加成功了，但查询不出来，每页10条显示不出来
+
+NEWS("news", "newsConvertStrategyNews"),  //资讯
+	VIDEO("video", "newsConvertStrategyVideo"),  // 视频
+	BEAUTY("beauty", "newsConvertStrategyBeauty"),  // 美女
+	EPISODE("episode", "newsConvertStrategyEpisode"),  // 段子
+	ATLAS("atlas", "newsConvertStrategyAtlas");	// 图文
+
+
+setReviewSensitiveShieldWord
