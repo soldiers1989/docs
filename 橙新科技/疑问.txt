@@ -20,3 +20,6 @@ setReviewSensitiveShieldWord
 
 7.段子添加之后的立刻刷新会查询不出来，需要再查询一下
 8.段子edit失败，有错误但没有错误提示
+
+9.新增了段子，但查询不出来 _score分值排序的问题
+10.2007版本的excel不支持 
