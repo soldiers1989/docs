@@ -1,0 +1,37 @@
+xxarpg:
+
+1.指令（command）：
+
+	（1）每条指令都有自己的main方法，运行时会执行这个指令对应的功能。比如：Kick指令踢全部已经完成登录的玩家下线；Post指令发送全服公告；Stop指令停止服务器
+	（2）每个指令类都是创建一个具有该含义的Request对象，然后通过CommandHelper对象将Request对象发送出去
+	（3）每个指令都是一个Command类型的对象，包含这个指令的ID（command属性），还有这个指令所属的模块（module）
+	（4）ConsoleCommand管理了所有的运维管理指令，里面的指令所属的模块值都是-102。
+	（5）ConsoleResult管理了指令执行的结果，有成功/失败/未知错误
+	（6）ConsoleModule中管理了当前的模块MODULE_CURRENT，还有很多个当前模块下的子功能模块。
+	（7）ConsoleFacade是一个接口，用来执行某个指令，ConsoleFacadeImpl是它的实现。
+
+2.功能模块
+
+	账号模块：
+	（1）账号模块会有注册事件RegisterEvent，注册事件构造时会传入某个玩家，标志是哪个玩家注册。
+	（2）账号模块有一个账号异常AccountException，AccountExceptionCode管理了各种账号异常的代码，AccountException和AccountExceptionCode一般会结合使用。
+	（3）AccountFacade是账号服务门面（相当于Controller层），提供了创建账号，账号登录等方法；AccountService是账号服务（相当于Service层）。
+	（4）AccountResult表示账号执行的结果，比如账号已经存在，角色已经存在，角色名非法等。
+	（5）AccountModule管理了当前的模块值是12，还有很多账号模块下面的子功能模块。
+	（6）AccountPush是账号推送接口，推送账号的一些状态，比如推送强制退出，推送状态变更。
+	（7）Account是账户持久层实体，就是Model层。每个账号有自己的id，名称name，帐号来源渠道channel，最后登录时间loginOn等。
+	（8）AccountVo是账户业务层实体。
+	（9）AccountManager在启动时会保存 帐号名对应帐号标识的映射(这里面全部存放小写) （private ConcurrentMap<String, Long> name2Id = new ConcurrentHashMap<String, Long>();）
+	（10）accountManager相当于Dao层，accountManager层实际上是操作EntityCacheService来操作数据库。
+	（11）EntityCacheService其实就是Dao和数据库之间的一个缓存，如果某个对象已经存在EntityCacheService中，则对这个对象的修改可以直接反应到数据库上。
+
+	代码流程，以创建账号与角色为例：
+	1.前端会根据模块值（12）定位到账号服务门面（AccountFacade），然后根据子功能模块值（1）定位到服务门面中的服务（create）。
+	2.账号服务门面（AccountFacade）的实现类AccountFacadeImpl因为是Controller层，会去校验参数是否为空，一系列判断合法后，会调用accountService服务层的服务（create），
+	最后给前端返回AccountResult中定义的执行结果。
+	3.AccountFacadeImpl的create首先去检查这个账号名是否已经存在（loadByName(accountName)），实际上是判断账号和角色是否存在Account account = accountManager.loadByName(name);
+	Player player = playerService.load(account.getId());
+	4.private EntityCacheService<Long, Account> accountCache的loadOrCreate创建一个对象
+
+	战斗模块：
+	（1）角色分为：战士SOLDIER,弓箭手ARCHER,法师MAGE
