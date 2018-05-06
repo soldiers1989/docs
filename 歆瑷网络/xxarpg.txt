@@ -24,6 +24,7 @@ xxarpg:
 	（9）AccountManager在启动时会保存 帐号名对应帐号标识的映射(这里面全部存放小写) （private ConcurrentMap<String, Long> name2Id = new ConcurrentHashMap<String, Long>();）
 	（10）accountManager相当于Dao层，accountManager层实际上是操作EntityCacheService来操作数据库。
 	（11）EntityCacheService其实就是Dao和数据库之间的一个缓存，如果某个对象已经存在EntityCacheService中，则对这个对象的修改可以直接反应到数据库上。
+	（12）AccountManager加载数据库信息实际上调用了Querier对象的方法，而Querier的实现HibernateQuerier实际上调用了HibernateTemplate的方法。
 
 	代码流程，以创建账号与角色为例：
 	1.前端会根据模块值（12）定位到账号服务门面（AccountFacade），然后根据子功能模块值（1）定位到服务门面中的服务（create）。
@@ -35,3 +36,44 @@ xxarpg:
 
 	战斗模块：
 	（1）角色分为：战士SOLDIER,弓箭手ARCHER,法师MAGE
+	
+3.锁
+	
+	ReferenceCounterLockHolder（带计数器的可重用锁容器），里面每个id都有一把带计数器的锁（ReferenceCounterCounterLock）
+	
+4.事件
+
+	（1）首先有一个命名事件接口（NamedEvent），它里面只有一个获取事件名的方法（getName）。
+	（2）然后有一个身份标识事件接口（IdentityEvent），增加了一个获取发生事件的用户标识的方法（getOwner）。
+	（3）针对登出事件，定义了一个登出事件接口（LogoutEvent），实现了getName方法返回自己的事件名"common:logout"，同时也实现了getOwner方法返回玩家的ID：player.getId()；
+	注意登出事件接口（LogoutEvent）的构造方法valueOf改变了返回类型，返回类型并不是LogoutEvent，而是Event<LogoutEvent>，它的name是事件名，body就是LogoutEvent。
+	（4）Event<T>是一个某个泛型的类，有自己的事件头（name）和事件体（body）。
+	
+	
+	代码流程，以登出事件为例：
+	1.创建一个登出事件
+	
+	Event<LogoutEvent> event = LogoutEvent.valueOf(player, SessionEventCause.KICK, prev);
+	
+	2.降登出事件发送到事件总线上
+	
+	// 以同步方式发出登出事件，迫使状态恢复到下线状态
+	eventBus.syncPost(event);
+	
+5.Socket
+
+	（1）Request<T>是一个请求对象，是一个类，每个请求有一个通信指令（Command command），还有一个消息体（T body）
+	（2）SessionManager是会话管理接口。
+	
+6.自定义的注解
+
+	（1）@SocketModule(MODULE)一般修饰门面类，MODULE是同包的interface中定义的常量
+	（2）@SocketCommand(COMMAND_CREATE)一般修饰门面类的方法
+	（3）@InBody(value = "channel", required = false)一般修饰门面类的方法的参数，value是参数的名称，required表示是否是必须传的参数，默认是必须的。
+	（4）@Sync("ACCOUNT")标注方法为同步方法, 在独立线程池同步执行，value是同步键
+	（5）@InSession(IDENTITY)
+	（6）@Static("PlayerService.selectCountry")静态资源注入注释
+	（7）自定义注解一般会有自己的属性值，属性还有默认值，实际上在某些类中（比如：TypeDefinition）会对这些自定义注解进行读取，然后根据注解的属性值的不同而做不同的处理。
+
+
+	
