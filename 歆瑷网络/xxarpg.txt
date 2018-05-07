@@ -36,7 +36,23 @@ xxarpg:
 
 	战斗模块：
 	（1）角色分为：战士SOLDIER,弓箭手ARCHER,法师MAGE
-	
+
+
+	消耗模块：
+	（1）消耗过程中产生的异常CostException，CostExceptionCode一般作为一个参数来构造CostException
+	（2）CostExceptionType是一个枚举类型，封装了很多new出来的CostException
+	（3）CostResult是消耗过程执行的结果，比如武将数量不足，武将不存在，扣减物品数量不足等
+	（4）CostItem是消耗物品，有物品代码int code，还有数量long amount，附件物品类型CostType type
+	（5）CostItemResult是消耗结果
+	（6）CostAndReward是某次消耗中的消耗列表（Collection<CostItemResult> costs）和奖励列表的集合（Collection<RewardResult> rewards）
+	（7）CostAndRewardVo是在CostAndReward的基础上附加一些对象
+	（8）CostService是消耗服务接口（相当于Service层），CostServiceImpl是它的实现；Reason是消耗的原因，Player表示是哪个玩家消耗的，
+	CostItem...表示消耗的物品，可以是任意个
+	（9）Pluser是消耗加成器处理对象，每一个原因（Reason）的原因名（name）都对应一个消耗加成器处理对象（Pluser）
+	（10）CostType是消耗类型，是一个枚举类型，比如：流通货币，道具，武将装备，英雄，竞技场积分，元神，联盟经验等
+	（11）一种消耗类型（CostType）可能会有多个消耗物品（ICostPlus）；一种消耗类型（CostType）有多个加成处理器（ICostPlus）
+	（12）ICostPlus是加成处理器，对某个玩家（Player）的某种消耗类型（CostType）的具体消耗内容（List<CostItem>）做减免或加成处理
+
 3.锁
 	
 	ReferenceCounterLockHolder（带计数器的可重用锁容器），里面每个id都有一把带计数器的锁（ReferenceCounterCounterLock）
@@ -74,6 +90,14 @@ xxarpg:
 	（5）@InSession(IDENTITY)
 	（6）@Static("PlayerService.selectCountry")静态资源注入注释
 	（7）自定义注解一般会有自己的属性值，属性还有默认值，实际上在某些类中（比如：TypeDefinition）会对这些自定义注解进行读取，然后根据注解的属性值的不同而做不同的处理。
+
+7.异常
+	（1）IllegalArgumentException是参数不合法异常，比如：
+	
+	// 参数验证
+	if (items == null || items.length == 0) {
+		throw new IllegalArgumentException("扣除物品不能为空");
+	}
 
 
 	
