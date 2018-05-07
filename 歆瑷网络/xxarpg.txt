@@ -48,10 +48,35 @@ xxarpg:
 	（7）CostAndRewardVo是在CostAndReward的基础上附加一些对象
 	（8）CostService是消耗服务接口（相当于Service层），CostServiceImpl是它的实现；Reason是消耗的原因，Player表示是哪个玩家消耗的，
 	CostItem...表示消耗的物品，可以是任意个
-	（9）Pluser是消耗加成器处理对象，每一个原因（Reason）的原因名（name）都对应一个消耗加成器处理对象（Pluser）
+	
+
+
 	（10）CostType是消耗类型，是一个枚举类型，比如：流通货币，道具，武将装备，英雄，竞技场积分，元神，联盟经验等
-	（11）一种消耗类型（CostType）可能会有多个消耗物品（ICostPlus）；一种消耗类型（CostType）有多个加成处理器（ICostPlus）
-	（12）ICostPlus是加成处理器，对某个玩家（Player）的某种消耗类型（CostType）的具体消耗内容（List<CostItem>）做减免或加成处理
+	（11）一种消耗类型（CostType）可能会有多个消耗物品（CostItem）；一种消耗类型（CostType）有多个加成处理器（ICostPlus）
+	
+	
+	（14）CostProcessorsHolder维护了每一种消耗类型（CostType）对应的ICostable，如：
+
+	private final Map<CostType, ICostable> processors = new HashMap<CostType, ICostable>();
+
+	（15）扣费流程：
+		首先某个玩家（Player）会因为某种原因（Reason）去消耗某些物品（CostItem...）；
+		根据这个原因的名称（Reason的name）获取消耗加成器处理对象（Pluser）；
+		加成器处理对象（Pluser）会对某些物品（CostItem...）根据消耗类型（CostType）采用对应的加成消耗器列表（List<ICostPlus>），对这个物品的消耗进行加成；
+		对某些物品（CostItem...）根据消耗类型（CostType）采用对应的消费器（ICostable），执行具体的扣费操作；
+
+	（16）ICostable是具体的消费接口（真正会去扣东西的），HybirdCostProcessor（混合扣费）和ReplaceCostProcessor（替换扣费），ItemManager，WalletManager继承ICostable
+	（17）ICostPlus是加成处理器，对某个玩家（Player）的某种消耗类型（CostType）的具体消耗内容（List<CostItem>）做减免或加成处理
+
+	（18）Pluser是消耗加成器处理对象，每一个原因（Reason）的原因名（name）都对应一个消耗加成器处理对象（Pluser），
+	由CostPlusesHolder维护这个关系，所以一般从CostPlusesHolder根据Reason的name获取这个原因（Reason）对应的消耗加成器处理对象（Pluser）；
+	（19）每一个Pluser中都维护了消耗类型（CostType）和消耗加成器列表（List<ICostPlus>）的关系，说明一个消耗类型（CostType）对应多个消耗加成处理器（ICostPlus）
+	（20）PlusType定义了消耗加成器（ICostPlus）的名称
+	（21）Reason表示消费这些道具的原因
+	
+	奖励模块：
+	（1）奖励过程中产生的异常RewardException
+
 
 3.锁
 	
