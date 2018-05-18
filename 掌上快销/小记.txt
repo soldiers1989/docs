@@ -13,3 +13,5 @@ service：
 
 Dao：
 	1.InvestedBudgetMapper是Mapper类，位于data-center-service工程的com.laimi.data.dao.hadoop中，Mapper xml位于同包下的sqlmap子包中。
+	2.这里的Mapper类的参数类型基本上都是一个Map<String,Object> map，返回值类型基本都是List<Map<String,Object>>，没有将参数和返回值封装成一个对象。
+	但部分Mapper类的参数类型也会用到XxxExample，根据条件进行查询，部分返回值类型也有封装成对象，比如：List<StoreLoginHistory> 。
