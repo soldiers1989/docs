@@ -1,0 +1,45 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 101.236.47.5 (be patient)
+
+
+Server Software:        
+Server Hostname:        101.236.47.5
+Server Port:            18883
+
+Document Path:          /api/route/service/investedBudgetService/getInvestedBudgetInfo
+Document Length:        360 bytes
+
+Concurrency Level:      8
+Time taken for tests:   90.473 seconds
+Complete requests:      2000
+Failed requests:        0
+Total transferred:      1218000 bytes
+Total body sent:        448000
+HTML transferred:       720000 bytes
+Requests per second:    22.11 [#/sec] (mean)
+Time per request:       361.891 [ms] (mean)
+Time per request:       45.236 [ms] (mean, across all concurrent requests)
+Transfer rate:          13.15 [Kbytes/sec] received
+                        4.84 kb/s sent
+                        17.98 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       2
+Processing:     6  334 2860.2      7   52264
+Waiting:        6  334 2860.2      7   52264
+Total:          6  335 2860.2      7   52265
+
+Percentage of the requests served within a certain time (ms)
+  50%      7
+  66%      8
+  75%     10
+  80%     11
+  90%     20
+  95%    715
+  98%   3130
+  99%   3377
+ 100%  52265 (longest request)

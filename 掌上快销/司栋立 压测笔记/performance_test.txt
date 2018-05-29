@@ -1,0 +1,40 @@
+测试机 101.236.47.5
+物理CPU个数 2
+每个物理CPU中core的个数 1
+
+top -b -n 20000 -p 90283 | tee top_out.txt
+vmstat 1 | tee vmstat_out.txt
+ab -c 8 -n 2000 -T application/json -p getInvestedBudgetInfo_payload.json http://101.236.47.5:18883/api/route/service/investedBudgetService/getInvestedBudgetInfo | tee ab_out.txt
+
+ab_out.txt:
+Concurrency Level:      8
+Time taken for tests:   90.473 seconds
+Complete requests:      2000
+Failed requests:        0
+Total transferred:      1218000 bytes
+Total body sent:        448000
+HTML transferred:       720000 bytes
+Requests per second:    22.11 [#/sec] (mean)
+Time per request:       361.891 [ms] (mean)
+Time per request:       45.236 [ms] (mean, across all concurrent requests)
+Transfer rate:          13.15 [Kbytes/sec] received
+                        4.84 kb/s sent
+                        17.98 kb/s total
+
+grep java < top_out.txt | awk '{sum+=$9} END {print "Average = ", sum/NR}'
+Average =  8.585 # %CPU:接口服务平均使用CPU的百分比
+
+grep java < top_out.txt | awk '{sum+=$10} END {print "Average = ", sum/NR}'
+Average =  10.005 # %MEM:接口服务平均使用内存的百分比
+
+grep -v procs < vmstat_out.txt | awk '{sum+=$13} END {print "Average = ", sum/NR}'
+Average =  15.918 # us:用户态进程平均使用CPU的百分比
+
+grep -v procs < vmstat_out.txt | awk '{sum+=$14} END {print "Average = ", sum/NR}'
+Average =  5.27869 # sy:内核态进程平均使用CPU的百分比
+
+grep -v procs < vmstat_out.txt | awk '{sum+=$15} END {print "Average = ", sum/NR}'
+Average =  57.1557 # id:平均处于空闲的CPU百分比
+
+grep -v procs < vmstat_out.txt | awk '{sum+=$16} END {print "Average = ", sum/NR}'
+Average =  16.2951 # wa:平均系统等待IO的CPU时间百分比
