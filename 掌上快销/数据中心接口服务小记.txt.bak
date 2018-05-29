@@ -15,9 +15,159 @@ service：
 		（1）InvestedBudgetService：销售中心的后台接口，用于给销售中心获取预算
 		（2）AppArdpServiceImpl是手机那个蓝色app的后台接口，用于给销售代表访问门店的；ArdpServiceImpl是给web后台的
 		（3）WMSSpectacularsService是仓配中心的后台接口，用于给仓配中心获取看板数据
-	9.这个工程很喜欢用List<Map<String, Object>>，其实List中每一个下标就是一个对象，某个下标都有一个Map，这个Map就是一个对象
+	9.这个工程很喜欢用List<Map<String, Object>>，其实List中每一个下标就是一个对象，某个下标都有一个Map，这个Map就是一个对象，只不过不封装，好坑
 
 Dao：
 	1.InvestedBudgetMapper是Mapper类，位于data-center-service工程的com.laimi.data.dao.hadoop中，Mapper xml位于同包下的sqlmap子包中。
 	2.这里的Mapper类的参数类型基本上都是一个Map<String,Object> map，返回值类型基本都是List<Map<String,Object>>，没有将参数和返回值封装成一个对象。
 	但部分Mapper类的参数类型也会用到XxxExample，根据条件进行查询，部分返回值类型也有封装成对象，比如：List<StoreLoginHistory> 。
+
+
+table:
+	1.这里返回报表的时候，因为表头名称都是由后台返回，所以会对Mapper类返回的List<Map<String,Object>>类型进行转换：
+	
+	//Mapper查询出来的数据
+	List<Map<String, Object>> mapList = busiEmpDataMapper.getEmpBillStoreCount(map);
+	//找到对应的properties文件，进行转换
+        TableData tableData = tableTemplateGenerator.getTableData(TableTemplateEnum.EMP_BILL_STORE_COUNT, mapList);
+        Result<TableData> result = new Result<>();
+        //原工程是通过AOP，当Status为空时，填充Staus为OK
+        result.setStatus(Status.OK);
+        result.setData(tableData);
+        return result;
+
+	2.TableData中的cnHeaders是字段名称和表头名称的映射关系：
+
+	"cnHeaders": [
+            [
+                "employee_name",
+                "业务员名称"
+            ],
+            [
+                "bill_count",
+                "订单数量"
+            ],
+            [
+                "bill_total",
+                "订单金额"
+            ],
+            [
+                "bill_store",
+                "订单门店数"
+            ],
+            [
+                "active_store_num",
+                "活跃门店数"
+            ],
+            [
+                "logging",
+                "录入门店数"
+            ],
+            [
+                "plan_sign_pro",
+                "按计划签到天数"
+            ]
+        ],
+
+	keys是所有的字段名称的数组：
+
+	"keys": [
+            "employee_name",
+            "bill_count",
+            "bill_total",
+            "bill_store",
+            "active_store_num",
+            "logging",
+            "plan_sign_pro"
+        ],
+
+	data是纯数据的数组：
+
+	"data": [
+            [
+                "黄利波",
+                "62",
+                "40107.84",
+                "39",
+                "113",
+                "0",
+                "0/0"
+            ],
+            [
+                "周彦锋",
+                "56",
+                "39661.46",
+                "53",
+                "133",
+                "0",
+                "0/0"
+            ],
+            [
+                "杜伟江",
+                "43",
+                "37253.2",
+                "26",
+                "89",
+                "0",
+                "0/0"
+            ],
+	 ...............
+
+
+	originalRecord是Mapper返回的原始的List<Map<String, Object>> ：
+
+	"originalRecord": [
+            {
+                "bill_count": 62,
+                "city": null,
+                "sign": null,
+                "employee_name": "黄利波",
+                "first_order_money": null,
+                "bill_total": 40107.84,
+                "first_order_count": null,
+                "plan_sign_pro": "0/0",
+                "store_num": null,
+                "employee_id": null,
+                "active_store_num": 113,
+                "logging": 0,
+                "normal_sign": null,
+                "bill_store": 39
+            },
+            {
+                "bill_count": 56,
+                "city": null,
+                "sign": null,
+                "employee_name": "周彦锋",
+                "first_order_money": null,
+                "bill_total": 39661.46,
+                "first_order_count": null,
+                "plan_sign_pro": "0/0",
+                "store_num": 290,
+                "employee_id": 478424,
+                "active_store_num": 133,
+                "logging": 0,
+                "normal_sign": null,
+                "bill_store": 53
+            },
+	..................
+
+	originalCnHeaders也是字段名称和表头名称的映射关系，感觉和cnHeaders差不多：
+
+	"originalCnHeaders": [
+            [
+                "agent_code",
+                "所属供应商编码"
+            ],
+            [
+                "employee_name",
+                "业务员名称"
+            ],
+            [
+                "bill_count",
+                "订单数量"
+            ],
+            [
+                "bill_total",
+                "订单金额"
+            ],
+	   ..............
