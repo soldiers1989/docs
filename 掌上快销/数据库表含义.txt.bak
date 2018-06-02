@@ -1,0 +1,87 @@
+--t_appraise_feedback：评价（反馈）表，门店店主的评价
+	appraise_id：评价id，主键
+	bill_id：订单id，对应t_sales_bill的bill_id，说明评价和订单是多对一的关系
+	store_id：门店id（门店账号），对应t_store的store_id，所以t_store就是门店表了，说明评价和门店是多对一的关系
+	feedback_time：反馈时间，是一个datetime类型
+	remark：自定义评价，就是可以随便写任何文字的
+
+--t_appraise_feedback_info：也是评价（反馈）补充表，是对评价（反馈）表t_appraise_feedback的补充
+	info_id：评价补充id，主键
+	appraise_id：评价id，表示是对哪些评价的补充，对应t_appraise_feedback的appraise_id
+	type：评价补充的类型，表示这个补充是对商品的补充，还是对物流的补充，对商品评价：goods,对物流评价：logistics
+	appraise：满意程度，不满意：unsatisfied ，满意：satisfied，非满意：verySatisfied'
+	appraise_detail：自定义评价，以逗号分割，？？？这个目前知道和remark是不是重复了
+
+--t_driver：司机表
+	id：司机id，主键
+	inventory_id：仓库id，？？？目前不知道是什么意思
+	current_inventory_id：当前仓库id
+	oper_id：操作人，对应t_operator的主键oper_id
+	code：？？？目前不知道是什么意思
+	name：司机的姓名
+	status：司机的状态，idle : 空闲 , occupy : 占用 , disable : 停用
+	type：司机的类型，official : 自营 , unofficial : 外协
+	created_by：创建这条司机记录的人的id
+	creation_date：创建时间
+	last_updated_by：最后更新人的id
+	last_update_date：最后更新时间
+
+--t_tms_vehicle_plan：排车计划表，tms是运输管理的意思
+	id：排车计划id，主键
+	plan_code：排车计划编号
+	plan_status：排车计划状态，完成：finished，未确认：unconfirmed，确认：confirmed，取消：cancel
+	car_is_full_load：车辆是否满载
+	full_load_rate：车辆满载率
+	actual_addr_num：计划中要送地址的数量，？？？很绕口，啥意思
+	volume：总体积
+	inventory_id：仓库id
+	car_id：指派车辆ID
+	driver_id：指派司机ID，说明排车计划和司机是多对一的关系
+	remain_money：当前计划结算剩余的钱
+	center_order_id：计划中心坐标的订单ID,对应t_tms_order.id，所以t_tms_order就是运输管理的订单表了
+	is_truncate：是否截单
+	is_count_bonus：是否已经计算绩效，1是0否，bonus是绩效的意思
+	count_bonus_time：计算绩效时间，timestamp类型
+	truncate_reason：截单原因，truncate是截单的意思
+	confirm_time：确认时间
+	finish_time：完成时间
+	cancel_time：取消时间
+
+--t_tms_order：运输单表，运输单有2种类型，发货单和退货单
+	id：订单id，主键
+	plan_id：计划id，计划id为空则未入计划，对应t_tms_vehicle_plan的排车计划id（t_tms_vehicle_plan.id），说明运输单和排车计划是多对一的关系
+	inventory_id：仓库id
+	line_id：线路id，对应t_tms_line的路线id（t_tms_line.id）
+	bill_id:关联订单id（发货单，退货单），？？？两个单？
+	bill_code：关联订单单号（发货单号或退货单号，如果bill_type）
+	bill_type：订单类型，发货单：FHD,取件单：THD
+	order_status：订单状态，备货，装车，送达等（初始化为备货中。），备货中：stocking，已备货：stocked，已取消：cancel,已打单：printed，已送达：sent，已装车：loaded，已取单：fetched，已取件：pickup
+	store_id：门店id
+	store_name：门店名称
+
+	
+
+--t_store_biz_region：门店所在业务区表，表示某个门店在哪个业务区
+	store_id：门店id
+	biz_name：业务区名称，比如：华南大区，业务区是自己自定义指定的
+	biz_province：业务区所在省份，比如：华南大区在广东省，台湾大区在台湾
+	biz_region：业务区所在行政区，比如：佛山站
+
+--t_tms_driver_bonus：司机绩效表
+	id：绩效id，主键
+	inventory_id：仓库id
+	driver_id：司机id
+	plan_id：计划id
+	plan_code：计划号
+	order_id：订单id
+	scheme_id：方案id
+	bonus_money：绩效金额
+	order_money：订单金额
+	
+t_sales_bill：销售订单表
+	bill_id：订单id
+
+
+
+
+？？？？？？？？？？？？？？？order和bill是什么关系
