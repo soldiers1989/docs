@@ -1,0 +1,27 @@
+0.0.0.0 41291 rds6qxe126phmtspwi72.mysql.rds.aliyuncs.com  3306  #laimi读写数据库
+0.0.0.0 42904 rm-m5eb3mg98au6s55xp.mysql.rds.aliyuncs.com  3306 #活动中心实例
+0.0.0.0 28743 rr-m5ey6adr6j2a7mfqp.mysql.rds.aliyuncs.com  3306  #laimi数据库的只读实例
+0.0.0.0 29435 rr-m5e4534sh7z7uekn4.mysql.rds.aliyuncs.com  3306  #laimi数据库的只读实例1
+0.0.0.0 25287 rr-m5e9qo0g119j4vuz3.mysql.rds.aliyuncs.com  3306  #laimi_activity数据库的只读实例
+0.0.0.0 31276 rm-m5e0h9tf9tv21fq68.mysql.rds.aliyuncs.com  3306  #对外saleman的数据库实例
+
+#数据中心RDS 
+0.0.0.0  27384 rm-m5e0u5cuwq56698y2ui.mysql.rds.aliyuncs.com  3306  #数据中心专用的的读写数据库实例
+#数据中心RDS-只读
+0.0.0.0 18458 rr-m5ey87d02fhs1334t.mysql.rds.aliyuncs.com 3306 #数据中心只读数据库实例
+
+    
+# ARDP 数据库转发
+#0.0.0.0 14379 rm-m5ed6899pcq11244b.mysql.rds.aliyuncs.com 3306
+0.0.0.0  36482  rm-m5ed6899pcq11244b.mysql.rds.aliyuncs.com 3306
+    
+
+#  ka数据库
+0.0.0.0 17398 rm-m5e16k1o1x7llxqlsi.mysql.rds.aliyuncs.com 3306
+
+#laimi-erp 数据库
+0.0.0.0  31616 rm-m5e9b0y31514o0y5t.mysql.rds.aliyuncs.com 3306
+#laimi-shopcart 数据库
+0.0.0.0  32638 rm-m5e6urm5h7ovnv574.mysql.rds.aliyuncs.com 3306
+
+0.0.0.0 34231 rm-m5eesy7srb8477ng4.mysql.rds.aliyuncs.com 3306

@@ -7,23 +7,23 @@
 	6.Ë¾»úÔÚÔËÊä¹ı³ÌÖĞ²úÉúµÄ¼¨Ğ§»á·ÅÈët_tms_driver_bonusÖĞ¡£
 
 
---getDriverBill
+-- getDriverBill
 SELECT DISTINCT
-	a.bill_id --²éÑ¯³ö²»ÖØ¸´µÄ¶©µ¥ºÅ
+	a.bill_id -- ²éÑ¯³ö²»ÖØ¸´µÄ¶©µ¥ºÅ
 FROM
 	t_appraise_feedback a
-	LEFT JOIN t_tms_order b ON a.bill_id = b.bill_id  --ÆÀ¼Û±íµÄ¶©µ¥id£¨bill_id£©ºÍÔËÊäµ¥±íµÄ¶©µ¥id£¨bill_id£©¹ØÁª
-	LEFT JOIN t_tms_vehicle_plan c ON b.plan_id = c.id --ÔËÊäµ¥±íµÄ¼Æ»®id£¨plan_id£©ºÍÅÅ³µ¼Æ»®±íµÄ¼Æ»®id£¨id£©¹ØÁª
-	LEFT JOIN t_driver d ON c.driver_id = d.id --ÅÅ³µ¼Æ»®±íµÄË¾»úid£¨driver_id£©ºÍË¾»ú±íµÄË¾»úid£¨id£©¹ØÁª
+	LEFT JOIN t_tms_order b ON a.bill_id = b.bill_id  -- ÆÀ¼Û±íµÄ¶©µ¥id£¨bill_id£©ºÍÔËÊäµ¥±íµÄ¶©µ¥id£¨bill_id£©¹ØÁª
+	LEFT JOIN t_tms_vehicle_plan c ON b.plan_id = c.id -- ÔËÊäµ¥±íµÄ¼Æ»®id£¨plan_id£©ºÍÅÅ³µ¼Æ»®±íµÄ¼Æ»®id£¨id£©¹ØÁª
+	LEFT JOIN t_driver d ON c.driver_id = d.id -- ÅÅ³µ¼Æ»®±íµÄË¾»úid£¨driver_id£©ºÍË¾»ú±íµÄË¾»úid£¨id£©¹ØÁª
 WHERE
 	1 = 1 
-	AND d.id = 55 --É¸Ñ¡³öË¾»úid
-	AND YEAR ( c.count_bonus_time ) = 2018 --É¸Ñ¡³ö¼ÆËã¼¨Ğ§Äê·İ
-	AND MONTH ( c.count_bonus_time ) = 5  --É¸Ñ¡³ö¼ÆËã¼¨Ğ§ÔÂ·İ
+	AND d.id = 55 -- É¸Ñ¡³öË¾»úid
+	AND YEAR ( c.count_bonus_time ) = 2018 -- É¸Ñ¡³ö¼ÆËã¼¨Ğ§Äê·İ
+	AND MONTH ( c.count_bonus_time ) = 5  -- É¸Ñ¡³ö¼ÆËã¼¨Ğ§ÔÂ·İ
 
 
---getDriverRaise
-SELECT --Ò»¸öË¾»ú¿ÉÒÔÓĞ¶à¸ö¶©µ¥£¬×îºó¸ù¾İ²éÑ¯³öÄ³¸öË¾»ú£¬Ã¿¸ö¼ÆËã¼¨Ğ§ÔÂ·İµÄ·ÖÊı£¬¶©µ¥Êı£¬ÂúÒâ¶©µ¥Êı£¬·Ç³£ÂúÒâµÄ¶©µ¥Êı£¬²»ÂúÒâµÄ¶©µ¥Êı
+-- getDriverRaise
+SELECT -- Ò»¸öË¾»ú¿ÉÒÔÓĞ¶à¸ö¶©µ¥£¬×îºó¸ù¾İ²éÑ¯³öÄ³¸öË¾»ú£¬Ã¿¸ö¼ÆËã¼¨Ğ§ÔÂ·İµÄ·ÖÊı£¬¶©µ¥Êı£¬ÂúÒâ¶©µ¥Êı£¬·Ç³£ÂúÒâµÄ¶©µ¥Êı£¬²»ÂúÒâµÄ¶©µ¥Êı
 	round(
 		(
 			(
@@ -39,42 +39,42 @@ SELECT --Ò»¸öË¾»ú¿ÉÒÔÓĞ¶à¸ö¶©µ¥£¬×îºó¸ù¾İ²éÑ¯³öÄ³¸öË¾»ú£¬Ã¿¸ö¼ÆËã¼¨Ğ§ÔÂ·İµÄ·ÖÊı£
 	ifnull( sum( tmp.verySatisfaction_bill ), 0 ) verySatisfactionBill,
 	ifnull( sum( unsatisfied_bill ), 0 ) unsatisfiedBill 
 FROM
-	t_tms_order a --¹ØÁª¶©µ¥£¬ÅÅ³µ¼Æ»®£¬Ë¾»ú£¬»¹ÓĞÃ¿¸ö¶©µ¥Ã¿¸öÔÂµÄÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬4¸ö±íµÄ¹ØÁª
-	LEFT JOIN t_tms_vehicle_plan b ON a.plan_id = b.id --¶©µ¥±íµÄ¼Æ»®id£¨plan_id£©£¬¹ØÁªÅÅ³µ¼Æ»®±íµÄid£¨id£©
-	LEFT JOIN t_driver c ON b.driver_id = c.id --ÅÅ³µ¼Æ»®±íµÄË¾»úid£¨driver_id£©£¬¹ØÁªË¾»ú±íµÄid£¨id£©
+	t_tms_order a -- ¹ØÁª¶©µ¥£¬ÅÅ³µ¼Æ»®£¬Ë¾»ú£¬»¹ÓĞÃ¿¸ö¶©µ¥Ã¿¸öÔÂµÄÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬4¸ö±íµÄ¹ØÁª
+	LEFT JOIN t_tms_vehicle_plan b ON a.plan_id = b.id -- ¶©µ¥±íµÄ¼Æ»®id£¨plan_id£©£¬¹ØÁªÅÅ³µ¼Æ»®±íµÄid£¨id£©
+	LEFT JOIN t_driver c ON b.driver_id = c.id -- ÅÅ³µ¼Æ»®±íµÄË¾»úid£¨driver_id£©£¬¹ØÁªË¾»ú±íµÄid£¨id£©
 	LEFT JOIN ( 
-	SELECT --²éÑ¯Ã¿¸ö¶©µ¥£¬Ã¿¸öÔÂ£¬µÄÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		d.bill_id,           --¶©µ¥id
-		YEAR ( d.feedback_time ) year_time, --·´À¡Ê±¼äµÄÄê·İ
-		MONTH ( d.feedback_time ) month_time,  --·´À¡Ê±¼äµÄÔÂ·İ
-		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'satisfied' THEN '1' ELSE '0' END ) satisfaction_bill, --ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'verySatisfied' THEN '1' ELSE '0' END ) verySatisfaction_bill, --·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'unsatisfied' THEN '1' ELSE '0' END ) unsatisfied_bill --²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+	SELECT -- ²éÑ¯Ã¿¸ö¶©µ¥£¬Ã¿¸öÔÂ£¬µÄÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı£¬²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		d.bill_id,           -- ¶©µ¥id
+		YEAR ( d.feedback_time ) year_time, -- ·´À¡Ê±¼äµÄÄê·İ
+		MONTH ( d.feedback_time ) month_time,  -- ·´À¡Ê±¼äµÄÔÂ·İ
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'satisfied' THEN '1' ELSE '0' END ) satisfaction_bill, -- ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'verySatisfied' THEN '1' ELSE '0' END ) verySatisfaction_bill, -- ·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'unsatisfied' THEN '1' ELSE '0' END ) unsatisfied_bill -- ²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
 	FROM
 		t_appraise_feedback d
-		LEFT JOIN t_appraise_feedback_info e ON d.appraise_id = e.appraise_id   --ÆÀ¼Û±íºÍÆÀ¼Û²¹³ä±í¸ù¾İÆÀ¼Ûid£¨appraise_id£©¹ØÁª
+		LEFT JOIN t_appraise_feedback_info e ON d.appraise_id = e.appraise_id   -- ÆÀ¼Û±íºÍÆÀ¼Û²¹³ä±í¸ù¾İÆÀ¼Ûid£¨appraise_id£©¹ØÁª
 	GROUP BY
-		d.bill_id,                   --¸ù¾İ£¨¶©µ¥id£¬ÆÀ¼ÛÄê·İ£¬ÆÀ¼ÛÔÂ·İ£©ÁªºÏ·Ö×é
+		d.bill_id,                   -- ¸ù¾İ£¨¶©µ¥id£¬ÆÀ¼ÛÄê·İ£¬ÆÀ¼ÛÔÂ·İ£©ÁªºÏ·Ö×é
 		YEAR ( d.feedback_time ),
 		MONTH ( d.feedback_time ) 
 	) tmp ON a.bill_id = tmp.bill_id 
-	AND tmp.year_time = YEAR ( b.last_update_date )  --¶©µ¥±íºÍ¶©µ¥Ã¿¸öÔÂµÄÎïÁ÷ÆÀ¼Û×ÜÊı±í£¬²ÉÓÃ¶©µ¥£¬Äê·İ£¬ÔÂ·İ¹ØÁª
+	AND tmp.year_time = YEAR ( b.last_update_date )  -- ¶©µ¥±íºÍ¶©µ¥Ã¿¸öÔÂµÄÎïÁ÷ÆÀ¼Û×ÜÊı±í£¬²ÉÓÃ¶©µ¥£¬Äê·İ£¬ÔÂ·İ¹ØÁª
 	AND tmp.month_time = MONTH ( b.last_update_date )  
-	LEFT JOIN t_store_biz_region tmp2 ON a.store_id = tmp2.store_id --¹ØÁªÃÅµêÇøÓò±í£¬ÓÃ¶©µ¥±íµÄÃÅµêid£¨store_id£©¹ØÁªÃÅµêÇøÓò±íµÄÃÅµêid£¨store_id£©
+	LEFT JOIN t_store_biz_region tmp2 ON a.store_id = tmp2.store_id -- ¹ØÁªÃÅµêÇøÓò±í£¬ÓÃ¶©µ¥±íµÄÃÅµêid£¨store_id£©¹ØÁªÃÅµêÇøÓò±íµÄÃÅµêid£¨store_id£©
 WHERE
 	c.NAME IS NOT NULL 
-	AND a.bill_type = 'FHD'  --É¸Ñ¡¶©µ¥ÀàĞÍÎª·¢»õµ¥
-	AND a.order_status = 'sent'  --É¸Ñ¡¶©µ¥×´Ì¬ÎªÒÑËÍ´ï
-	AND c.id = 55 --É¸Ñ¡³öË¾»úid
-	AND YEAR ( b.count_bonus_time ) = 2018 --É¸Ñ¡³ö¼ÆËã¼¨Ğ§Äê·İ
-	AND MONTH ( b.count_bonus_time ) = 5 --É¸Ñ¡³ö¼ÆËã¼¨Ğ§ÔÂ·İ
+	AND a.bill_type = 'FHD'  -- É¸Ñ¡¶©µ¥ÀàĞÍÎª·¢»õµ¥
+	AND a.order_status = 'sent'  -- É¸Ñ¡¶©µ¥×´Ì¬ÎªÒÑËÍ´ï
+	AND c.id = 55 -- É¸Ñ¡³öË¾»úid
+	AND YEAR ( b.count_bonus_time ) = 2018 -- É¸Ñ¡³ö¼ÆËã¼¨Ğ§Äê·İ
+	AND MONTH ( b.count_bonus_time ) = 5 -- É¸Ñ¡³ö¼ÆËã¼¨Ğ§ÔÂ·İ
 GROUP BY
-	b.`driver_id`,             --¸ù¾İÖ¸ÅÉË¾»úid£¬¼ÆËã¼¨Ğ§Äê·İ£¬¼ÆËã¼¨Ğ§ÔÂ·İÁªºÏ·Ö×é
+	b.`driver_id`,             -- ¸ù¾İÖ¸ÅÉË¾»úid£¬¼ÆËã¼¨Ğ§Äê·İ£¬¼ÆËã¼¨Ğ§ÔÂ·İÁªºÏ·Ö×é
 	YEAR ( b.count_bonus_time ),  
 	MONTH ( b.count_bonus_time )
 
---getDriverBonusMoney
-SELECT --²éÑ¯³öÄ³¸öË¾»úÔÚÄ³¸öÔÂ·İµÄ¼¨Ğ§½±½ğ
+-- getDriverBonusMoney
+SELECT -- ²éÑ¯³öÄ³¸öË¾»úÔÚÄ³¸öÔÂ·İµÄ¼¨Ğ§½±½ğ
 	ifnull( SUM( bonus_money ), 0 ) bonus_money 
 FROM
 	t_tms_driver_bonus 
@@ -85,7 +85,7 @@ WHERE
 	AND MONTH ( creation_date ) = 5
 
 
---getDriverBillNum
+-- getDriverBillNum
 SELECT
 	appraise,
 	ifnull( sum( sum_satisfaction_quick ), 0 ) sumSatisfactionQuick,
@@ -107,15 +107,15 @@ FROM
 		e.`appraise`,
 		YEAR ( d.feedback_time ) year_time,
 		MONTH ( d.feedback_time ) month_time,
-		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'satisfied' THEN 1 ELSE 0 END ) satisfaction_bill,    --ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'verySatisfied' THEN 1 ELSE 0 END ) verySatisfaction_bill,          --·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'unsatisfied' THEN 1 ELSE 0 END ) unsatisfied_bill,				 --²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ËÍ»õ¿ìËÙ%' THEN 1 ELSE 0 END ) sum_satisfaction_quick,	 --ËÍ»õ¿ìËÙµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ÒÂ¹ÚÕûÆë%' THEN 1 ELSE 0 END ) sum_satisfaction_regular_cloth, --ÒÂ¹ÚÕûÆëµÄÎïÁ÷ÆÀ¼Û×ÜÊı
-		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%Ö÷¶¯°á»õ%' THEN 1 ELSE 0 END ) sum_satisfaction_goods,		--Ö÷¶¯°á»õµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'satisfied' THEN 1 ELSE 0 END ) satisfaction_bill,    -- ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'verySatisfied' THEN 1 ELSE 0 END ) verySatisfaction_bill,          -- ·Ç³£ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'unsatisfied' THEN 1 ELSE 0 END ) unsatisfied_bill,				 -- ²»ÂúÒâµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ËÍ»õ¿ìËÙ%' THEN 1 ELSE 0 END ) sum_satisfaction_quick,	 -- ËÍ»õ¿ìËÙµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ÒÂ¹ÚÕûÆë%' THEN 1 ELSE 0 END ) sum_satisfaction_regular_cloth, -- ÒÂ¹ÚÕûÆëµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%Ö÷¶¯°á»õ%' THEN 1 ELSE 0 END ) sum_satisfaction_goods,		-- Ö÷¶¯°á»õµÄÎïÁ÷ÆÀ¼Û×ÜÊı
 		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ÉÌÆ·ÍêºÃ%' THEN 1 ELSE 0 END ) sum_satisfaction_goods_good,
 		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%Ì¬¶ÈÁ¼ºÃ%' THEN 1 ELSE 0 END ) sum_satisfaction_attitude,
-		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ËÍ»õÌ«Âı%' THEN 1 ELSE 0 END ) sum_unsatisfied_slow,			--ËÍ»õÌ«ÂıµÄÎïÁ÷ÆÀ¼Û×ÜÊı
+		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ËÍ»õÌ«Âı%' THEN 1 ELSE 0 END ) sum_unsatisfied_slow,			-- ËÍ»õÌ«ÂıµÄÎïÁ÷ÆÀ¼Û×ÜÊı
 		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ÒÂ¹Ú²»Õû%' THEN 1 ELSE 0 END ) sum_unsatisfied_irregular_cloth,
 		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ÉÌÆ·ÆÆËğ%' THEN 1 ELSE 0 END ) sum_unsatisfied_damage_goods,
 		sum( CASE WHEN e.`type` = 'logistics' AND e.appraise_detail LIKE '%ËÍ´íÉÌÆ·%' THEN 1 ELSE 0 END ) sum_unsatisfied_wrong_goods,
@@ -125,7 +125,7 @@ FROM
 		t_appraise_feedback d
 		LEFT JOIN t_appraise_feedback_info e ON d.appraise_id = e.appraise_id 
 	WHERE
-		1 = 1  --É¸Ñ¡³ö¶©µ¥idÁĞ±í
+		1 = 1  -- É¸Ñ¡³ö¶©µ¥idÁĞ±í
 	<if test="list != null">
 			and d.bill_id in
 			<foreach item="item" index="index" collection="list"
@@ -134,7 +134,7 @@ FROM
 			</foreach>
 	</if>
 	GROUP BY
-		d.appraise_id, --¸ù¾İÆÀ¼Ûid£¬ÂúÒâ³Ì¶È£¬·´À¡Äê·İ£¬·´À¡ÔÂ·İÁªºÏ·Ö×é
+		d.appraise_id, -- ¸ù¾İÆÀ¼Ûid£¬ÂúÒâ³Ì¶È£¬·´À¡Äê·İ£¬·´À¡ÔÂ·İÁªºÏ·Ö×é
 		e.`appraise`,
 		YEAR ( d.feedback_time ),
 		MONTH ( d.feedback_time ) 
@@ -145,7 +145,7 @@ ORDER BY
 	appraise DESC
 
 
---getHistoryDriverScore
+-- getHistoryDriverScore
 SELECT
 	a.*,
 	ifnull( sum( b.bonus_money ), 0 ) achievement 
@@ -191,8 +191,8 @@ FROM
 	WHERE
 		c.NAME IS NOT NULL 
 		AND a.bill_type = 'FHD' 
-		AND a.order_status = 'sent' < IF test = "id != null and id != ''" > 
-		AND c.id = 55 </ IF > 
+		AND a.order_status = 'sent' 
+		AND c.id = 55 
 	GROUP BY
 		b.`driver_id`,
 		YEAR ( b.last_update_date ),

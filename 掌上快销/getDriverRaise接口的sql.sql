@@ -1,13 +1,7 @@
-业务猜测：
-	1.先产生一张销售订单，放入t_sales_bill中。
-	2.这张销售订单会产生很多张送货单，退货单，这些送货单，退货单放在t_tms_order中，统属运货单。
-	3.每个运货单都有一个排车计划，安排怎么运货，排车计划放在t_tms_vehicle_plan中。
-	4.每个排车计划都有一辆车，一个司机，司机放在t_driver中。
-	5.门店会对这个销售订单有一些评价，评价会放在t_appraise_feedback中。
-	6.司机在运输过程中产生的绩效会放入t_tms_driver_bonus中。
+getDriverRaise：
 
+1.getDriverBill：获取该司机，某年，某个月的订单ID列表
 
--- getDriverBill
 SELECT DISTINCT
 	a.bill_id -- 查询出不重复的订单号
 FROM
@@ -21,9 +15,9 @@ WHERE
 	AND YEAR ( c.count_bonus_time ) = 2018 -- 筛选出计算绩效年份
 	AND MONTH ( c.count_bonus_time ) = 5  -- 筛选出计算绩效月份
 
+2.getDriverRaise：一个司机可以有多个订单，最后根据查询出某个司机，每个计算绩效月份的分数，订单数，满意订单数，非常满意的订单数，不满意的订单数
 
--- getDriverRaise
-SELECT -- 一个司机可以有多个订单，最后根据查询出某个司机，每个计算绩效月份的分数，订单数，满意订单数，非常满意的订单数，不满意的订单数
+SELECT 
 	round(
 		(
 			(
@@ -73,8 +67,9 @@ GROUP BY
 	YEAR ( b.count_bonus_time ),  
 	MONTH ( b.count_bonus_time )
 
--- getDriverBonusMoney
-SELECT -- 查询出某个司机在某个月份的绩效奖金
+
+3.getDriverBonusMoney：查询出某个司机在某个月份的绩效奖金
+SELECT 
 	ifnull( SUM( bonus_money ), 0 ) bonus_money 
 FROM
 	t_tms_driver_bonus 
@@ -84,8 +79,8 @@ WHERE
 	AND YEAR ( creation_date ) = 2018 
 	AND MONTH ( creation_date ) = 5
 
+4.getDriverBillNum：查询出每个订单的各种评价数
 
--- getDriverBillNum
 SELECT
 	appraise,
 	ifnull( sum( sum_satisfaction_quick ), 0 ) sumSatisfactionQuick,
@@ -126,13 +121,7 @@ FROM
 		LEFT JOIN t_appraise_feedback_info e ON d.appraise_id = e.appraise_id 
 	WHERE
 		1 = 1  -- 筛选出订单id列表
-	<if test="list != null">
-			and d.bill_id in
-			<foreach item="item" index="index" collection="list"
-							 open="(" separator="," close=")">
-					#{item}
-			</foreach>
-	</if>
+			and d.bill_id in ()
 	GROUP BY
 		d.appraise_id, -- 根据评价id，满意程度，反馈年份，反馈月份联合分组
 		e.`appraise`,
@@ -143,70 +132,3 @@ GROUP BY
 	`appraise` 
 ORDER BY
 	appraise DESC
-
-
--- getHistoryDriverScore
-SELECT
-	a.*,
-	ifnull( sum( b.bonus_money ), 0 ) achievement 
-FROM
-	(
-	SELECT YEAR
-		( b.last_update_date ) YEAR,
-		MONTH ( b.last_update_date ) MONTH,
-		round(
-			(
-				(
-					count( * ) - (
-						ifnull( sum( tmp.satisfaction_bill ), 0 ) + ifnull( sum( tmp.verySatisfaction_bill ), 0 ) + ifnull( sum( tmp.unsatisfied_bill ), 0 ) 
-					) + ifnull( sum( tmp.satisfaction_bill ), 0 ) 
-				) * 60 + ifnull( sum( tmp.verySatisfaction_bill ), 0 ) * 100 
-			) / count( * ),
-			2 
-		) score,
-		b.driver_id 
-	FROM
-		t_tms_order a
-		LEFT JOIN t_tms_vehicle_plan b ON a.plan_id = b.id
-		LEFT JOIN t_driver c ON b.driver_id = c.id
-		LEFT JOIN (
-		SELECT
-			d.bill_id,
-			YEAR ( d.feedback_time ) year_time,
-			MONTH ( d.feedback_time ) month_time,
-			sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'satisfied' THEN '1' ELSE '0' END ) satisfaction_bill,
-			sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'verySatisfied' THEN '1' ELSE '0' END ) verySatisfaction_bill,
-			sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'unsatisfied' THEN '1' ELSE '0' END ) unsatisfied_bill 
-		FROM
-			t_appraise_feedback d
-			LEFT JOIN t_appraise_feedback_info e ON d.appraise_id = e.appraise_id 
-		GROUP BY
-			d.bill_id,
-			YEAR ( d.feedback_time ),
-			MONTH ( d.feedback_time ) 
-		) tmp ON a.bill_id = tmp.bill_id 
-		AND tmp.year_time = YEAR ( b.last_update_date ) 
-		AND tmp.month_time = MONTH ( b.last_update_date )
-		LEFT JOIN t_store_biz_region tmp2 ON a.store_id = tmp2.store_id 
-	WHERE
-		c.NAME IS NOT NULL 
-		AND a.bill_type = 'FHD' 
-		AND a.order_status = 'sent' < IF test = "id != null and id != ''" > 
-		AND c.id = 55 </ IF > 
-	GROUP BY
-		b.`driver_id`,
-		YEAR ( b.last_update_date ),
-		MONTH ( b.last_update_date ) 
-	) a
-	LEFT JOIN t_tms_driver_bonus b ON a.driver_id = b.driver_id 
-	AND YEAR ( b.creation_date ) = `year` 
-	AND MONTH ( b.creation_date ) = a.`month` 
-GROUP BY
-	a.YEAR,
-	a.MONTH 
-ORDER BY
-	YEAR DESC,
-MONTH DESC 
-	LIMIT 0,
-	20
-

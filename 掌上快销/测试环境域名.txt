@@ -1,0 +1,45 @@
+172.16.187.122 test2
+172.16.187.127 test1
+172.16.91.126 test3
+121.40.93.9     laimi.hadoop.9
+100.98.40.244 callback.local.zskx.tech
+172.16.187.122 config.test2.51dinghuo.cc
+120.26.104.208  dms.51dignhuo.cc
+172.16.96.12  perf-redis
+172.16.117.178 new-test1
+172.16.96.190  perf-test3
+172.16.96.189  perf-test2
+172.16.96.189  helloworld
+
+# new test
+172.16.117.178  new-test1
+172.16.117.181 new-test2
+172.16.84.206  activity.db.newtest1.51dinghuo.cc
+172.16.84.232  salesman.db.newtest1.51dinghuo.cc
+172.16.84.224  erp.db.newtest1.51dinghuo.cc
+172.16.61.97   laimi.db.newtest1.51dinghuo.cc
+172.16.84.233  datacenter.db.newtest1.51dinghuo.cc
+172.16.117.181  config.newtest2.51dinghuo.cc
+172.16.117.178  config.newtest1.51dinghuo.cc
+172.16.117.178   redis.newtest1.51dinghuo.cc
+172.16.117.178   mongo.newtest1.51dinghuo.cc
+
+#old test
+
+172.16.187.127 test1
+172.16.187.122 test2
+172.16.58.21 activity.db.51dinghuo.cc
+172.16.58.71 salesman.db.51dinghuo.cc
+172.16.80.201 erp.db.51dinghuo.cc
+172.16.58.24  datacenter.db.51dinghuo.cc
+172.16.80.227 laimi.db.51dinghuo.cc
+172.16.187.122  config.test2.51dinghuo.cc
+172.16.187.127  config.test1.51dinghuo.cc
+172.16.187.127 redis.test1.51dinghuo.cc
+172.16.187.127 mongo.test1.51dinghuo.cc
+
+
+
+
+101.236.48.159 new-test1-1
+# develop
