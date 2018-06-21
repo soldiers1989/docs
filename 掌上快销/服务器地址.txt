@@ -18,6 +18,23 @@ url=jdbc:mysql://114.215.28.111:27384/platform_data?useUnicode=true&zeroDateTime
 username=zskx_hive
 password=CfAJoWPcq6pMBg8O
 
+测试环境数据库：
+外网IP：
+101.236.43.92
+内网IP：
+172.16.58.24
+通过中转机访问，IP:101.236.55.211   端口：33513
+username=root
+password=rdAdmtuK3qq7
+
+
+新测试环境数据库：
+通过中转机访问：101.236.55.211   22349
+172.16.84.233  新数据库地址，程序上填这个，访问的话通过中转机:   
+账号密码跟原来的数据库一样
+
+
+
 测试环境Redis：
 IP:139.129.111.158
 

@@ -1,0 +1,52 @@
+工程名称：goods-selection（选品）
+
+接口：
+	*GoodsSelectionService（选择商品Service）
+	（1）public ActivityGoodsSelectionResultVO getActivityGoodsSelection(ActivityParametersVO,ActivityConfigVO)
+	功能：根据活动参数进行选品，返回该活动的选品结果
+	
+
+	*GoodsFilterService（过滤商品Service）
+
+	（1）public filterGoods(ActivityParametersVO activityParametersVO,ActivityConfigVO activityConfigVO,List<long> goodsIdList)
+	功能：过滤商品
+
+	(2)  private filterGoodsByRestrictiveCondition(ActivityParametersVO activityParametersVO,ActivityConfigVO activityConfigVO,List<long> goodsIdList)
+	功能：根据限制条件过滤商品
+
+	（3）private filterGoodsThrowedInOtherActivitiesAtSameDay(ActivityParametersVO activityParametersVO,ActivityConfigVO activityConfigVO,List<long> goodsIdList)
+	功能：过滤在当天其他活动中已经投放过的商品
+
+	（4）private filterGoodsThrowedInSameTopicAtPastNTimesDays(ActivityParametersVO activityParametersVO,ActivityConfigVO activityConfigVO,List<long> goodsIdList)
+	功能：过滤在过去n次/n天出现在同一主题中的商品
+
+	*GoodsPriorityService（商品优先级Service）
+	（1）public void priorityGoods(ActivityParametersVO activityParametersVO,ActivityConfigVO activityConfigVO,List<long> goodsIdList)
+	功能：按优先级对商品排序
+
+	(2)private void priorityGoodsByLongestPeriodNotInvolvedActiveties(List<GoodsPriority> goodsPriorityList)
+	功能：最长时间没参与过活动的商品优先
+
+	(3)private void priorityGoodsByLongestPeriodNotInvolvedTopic(List<GoodsPriority> goodsPriorityList,long topicId)
+	功能：最长时间没参与过某主题的商品优先
+
+	（4）private void priorityGoodsByRatioOfPastWeekToMonthAveragePerDaySales(List<GoodsPriority> goodsPriorityList,long topicId)
+	功能：过去一周的日均销量低于月度日均销量百分比优先
+
+	*GoodsPriceAdjustService（商品价格调整Service）
+
+	
+
+	*GoodsQueryService（商品信息查询Service）
+	（1）public List<String> getSiteMonthTopNGoodsIdList(int siteId,int year,int month,int topN)
+	功能：查询某站点某月的top n商品
+
+	（2）public Double getGoodsSales(long goodsId,Date date,int deposit rate)
+	功能：查询商品在某天预设折扣率下的预测销量
+
+	（3）public Double getGoodsSales(List<long> goodsIdList)
+
+	
+
+
+	

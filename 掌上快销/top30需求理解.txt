@@ -16,32 +16,25 @@ top30商品：
 最优定价方案：
 
 	1.对外接口：
-		接口1：	List<String> getSiteMonthTopNGoodList(int siteId,int year,int month,int topN)
-			功能：查询某站点，某年，某月的top n商品
-			输入：站点ID，年份，月份，top n的n值
-			输出：top n商品ID列表
-			
-			
-		接口2：ActivityGoodsSelectionVO getActivityGoodsSelection(ActivityParametersVO,ActivityConfigVO)
+		
+		接口1：ActivityGoodsSelectionVO getActivityGoodsSelection(ActivityParametersVO,ActivityConfigVO)
 			功能：根据活动参数进行选品，返回该活动的选品结果
 			输入：
 				(1)活动的参数：								*ActivityParametersVO
 					*关联的活动ID							int activityId
-					*关联的活动编码							int activityCode
-					*关联的活动名称							String activityName
-					*投放形式：满减或特价（满减还要有参数记录满多少，减多少）	Enum activityType：FULL_SUBTRAACTION（满减）和SPECIAL_OFFER(特价)
+					*投放形式：满减或特价（满减还要有参数记录满多少，减多少）	"FULL_SUBTRAACTION"（满减）和"SPECIAL_OFFER"(特价)
 													如果是满减，要传入参数double full（满多少）和double minus（减多少）
 					*目标费比（费比=优惠/原价，即投入的优惠/原价的优惠比例）	double targetFebi
 					[*品类限制]，比如：只投放休闲食品，或不投放水饮			无用
 					[*品牌限制]，比如：只投放康师傅，或不投放怡宝和红牛		无用
 					*目标销量							double targetSales
 					*sku值								int sku
-					*过滤2个过滤条件后的商品列表					List<int> goodsIdList
+					基础折扣率
 
 				（2）投放配置：								*ActivityConfigVO
 					所有站点共享：
 						*活动主题优先级						ArrayList<int> activityTopicIdList（已有序）
-						*不能n次/n天投入同一主题投入同一主题			int timesNotInSameActivityTopic，int daysNotInSameActivityTopic
+						*不能n次/n天投入同一主题		int timesNotInSameActivityTopic，int daysNotInSameActivityTopic
 						*检查点							ArrayList<int> checkPoints（已有序）
 						*安全落后差距，安全超出差距				double safeBehindPercent，double safeBeyondPercent
 					单个站点所有活动共享：	
@@ -55,9 +48,13 @@ top30商品：
 					*商品ID，							int goodsId
 					*商品最终单价，精确到一毛					double goodsForecastUnitPrice
 					*商品预测销量							double goodsForecastSales
-				（3）如果是该固定投放关联的是满减活动，还要输出减少金额，精确到一元，比如：满100减5元，可以改成满100减4元       double forecastMinus（预测减多少）
+				（3）如果是该固定投放关联的是满减活动，还要输出减少金额，精确到一元，比如：满100减5元，可以改成满100减4元  ???     double forecastMinus（预测减多少）
 
 	2.对内接口：
+		接口1：	List<String> getSiteMonthTopNGoodList(int siteId,int year,int month,int topN)
+			功能：查询某站点，某年，某月的top n商品
+			输入：站点ID，年份，月份，top n的n值
+			输出：top n商品ID列表
 		接口1：“TOP30商品每日预测销量表”：商品ID，预设折扣后的价格（具体存的是系数），日期（精确到日），预测销量
 		接口2：最长时间没参与过活动的商品：查询每一个商品最后一次参与活动的时间，然后进行排序
 		接口3：最长时间没参与过该主题的活动的商品：查询每一个商品最后一次参与该主题的活动的时间，然后进行排序
@@ -89,7 +86,7 @@ top30商品：
 
 		（5）确定了活动优先级后，对于即将投放的单个固定投放A，
 
-		*根据步骤（2）中设置的活动A的限制条件筛选可用商品；
+		*根据步骤（2）中设置的活动A的限制条件筛选可用商品；             传的是子品类还是父品类？？？
 		*然后过滤其他活动中已经投放过的商品（其他活动是指 “当天” “该站点” “除本活动以外” 正在进行的其他活动）；
 		*然后过滤过往n次/n天出现在同一主题中的商品（针对站点，过往n次比如：过滤过往3次出现在秒杀主题中的商品）
 		（6）从步骤（5）会过滤掉步骤（1）中的部分商品，剩下的商品列表（过滤剩下的商品即可用商品）和计划投放商品数（计划投放商品数就是该活动计划卖多少个不同的商品）比较，如果可用商品数<计划投放商品数，
@@ -155,14 +152,34 @@ top30商品：
 		（2）每个投放计划中包含若干个固定投放，若干个定向投放
 		（3）每一个固定投放或定向投放都会一一关联一个活动
 
+	8.固定投放和定向投放的区别？
+		（1）定向投放的投放形式都是？？？
+		（2）定向投放多了个用户筛选规则
+		（3）定向投放没有品类和品牌的限制
+		（4）定向投放的每个活动没有目标费比和目标销量，只有统一费比和目标总销量
+		（5）定向投放是多个活动一起传参，一起选品
+
 	
 
 
 活动：	
-	1.活动的属性？
-		（1）活动的编码，其实就是活动ID
-		（2）
+	1.活动的id,code的区别？
+		id是每个活动的唯一ID，比如：1是注册送券-满100减10，和投放无关，投放有自己的投放ID；
+		code是活动模板的活动编码，是一个有意义的值，比如：HD-20160304-19是注册送券-满100减10，根据相同的活动模板生成的所有活动的code都是相同的，都是活动模板的code
 
+品类：
+	1.商品表中商品和品类的关系？
+		t_goods中的catagory_id表示品类id
+	2.品类表?
+		t_goods_library:
+			category_id:品类id
+			parent_category_id：父品类id
+			title：品类名称
+
+品牌：
+	1.商品表中商品和品牌的关系？
+		t_goods中的branch_code表示品牌id
+	
 
 前端界面：
 	1.TOP30商品界面：

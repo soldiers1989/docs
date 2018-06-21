@@ -1,13 +1,48 @@
-开发机上的Eureka地址： http://192.168.1.89:8000/ 
+开发机上的Eureka地址（192.168.1.89是ngix服务器的地址，通过ngix转发）： http://192.168.1.89:8000/ 
 
 datacenter1:
-外网IP：121.42.248.2
-内网IP：10.29.83.129
+外网IP：121.42.248.2            端口：33984  账号：huangjiantu  密码：huangjiantu123
+内网IP：10.29.83.129            端口：33984  
 
 datacenter2：
-外网IP：120.27.124.88
-内网IP:10.66.156.215
+外网IP：120.27.124.88            端口：33984  账号：huangjiantu  密码：huangjiantu123  
+内网IP:10.66.156.215            端口：33984  
 
 datacenter3：
-外网IP：120.27.124.88
-内网IP:10.66.156.215
+外网IP：120.27.124.88            端口：33984  账号：huangjiantu  密码：huangjiantu123  
+内网IP:10.66.156.215            端口：33984  
+
+
+生产环境数据库：
+url=jdbc:mysql://114.215.28.111:27384/platform_data?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+username=zskx_hive
+password=CfAJoWPcq6pMBg8O
+
+测试环境数据库：
+外网IP：
+101.236.43.92
+内网IP：
+172.16.58.24
+通过中转机访问，IP:101.236.55.211   端口：33513
+username=root	
+password=rdAdmtuK3qq7
+
+
+新测试环境数据库：
+通过中转机访问：101.236.55.211   22349
+172.16.84.233  新数据库地址，程序上填这个，访问的话通过中转机:   
+账号密码跟原来的数据库一样
+
+
+
+测试环境Redis：
+IP:139.129.111.158
+
+生产环境Redis：
+IP:10.45.227.75
+
+旧测试环境：
+外网IP：101.236.47.5 端口：33984 账号：datacenter 密码：zskx123456，root密码：uPQ2fbhT2AsJ
+
+新测试环境
+外网IP：101.236.57.165 端口：33984  root密码：1qaz@3edc
