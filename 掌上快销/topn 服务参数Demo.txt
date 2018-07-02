@@ -1,0 +1,151 @@
+固定投放（特价）：
+{
+  "activityParametersVO": {
+    "agentCode": "zskx_fs",
+    "activityDate":"2018-06-30",
+    "activityId": 6393166501142081536,
+    "activityType": "specialOffer",
+    "targetCost": 100,
+    "categoryIdList": [
+      73,68,65
+    ],
+    "brandList": [
+     "王老吉","娃哈哈" ,"康师傅","泰奇","东鹏","红牛","怡宝","统一","伊利","可口可乐"
+    ],
+    "targetSales": 10000.15,
+    "skuNumber": 5,
+    "threwInOtherActivitiesGoodsIdList":[137957352,137957331,330634023]
+  },
+  "activityConfigVO": {
+    "activityThemeList": ["秒杀","神价格","限时秒杀"],
+    "timesNotInSameActivityTheme": 3,
+    "daysNotInSameActivityTheme": 3,
+    "timesDaysInSameActivityThemeLogicFlag": 1,
+    "checkPoints": [0.20,0.60,0.80,1.00],
+    "safeBehindDifference": 0.12,
+    "safeBeyondDifference": 0.20,
+    "topN": 30,
+    "goodsPriceRangeQuotaList": [{
+      "goodsId": 330618148,
+      "onceQuota": 200,
+      "dailyQuota": 99999,
+      "priceRangeMin":38.00,
+      "priceRangeMax":40.50
+    },{
+      "goodsId": 137957355,
+      "onceQuota": 100,
+      "dailyQuota": 6000,
+      "priceRangeMin": 45,
+      "priceRangeMax": 47
+    },{
+      "goodsId": 137957355,
+      "onceQuota": 100,
+      "dailyQuota": 8000,
+      "priceRangeMin": 48,
+      "priceRangeMax": 50
+    }]
+  }
+}
+
+固定投放（满减）：
+{
+  "activityParametersVO": {
+    "agentCode": "zskx_fs",
+    "activityDate":"2018-06-30",
+    "activityId": 6393166501142081536,
+    "activityType": "fullCut",
+    "targetCost": 1000,
+    "categoryIdList": [
+      73,68,65
+    ],
+    "brandList": [
+     "王老吉","娃哈哈" ,"康师傅","泰奇","东鹏","红牛","怡宝","统一","伊利","可口可乐"
+    ],
+    "targetSales": 30000.15,
+    "skuNumber": 8,
+    "threwInOtherActivitiesGoodsIdList":[137957352,137957331],
+    "full":50
+  },
+  "activityConfigVO": {
+    "activityThemeList": ["秒杀","神价格","限时秒杀"],
+    "timesNotInSameActivityTheme": 3,
+    "daysNotInSameActivityTheme": 3,
+    "timesDaysInSameActivityThemeLogicFlag": 1,
+    "checkPoints": [0.20,0.60,0.80,1.00],
+    "safeBehindDifference": 0.12,
+    "safeBeyondDifference": 0.20,
+    "topN": 30,
+    "goodsPriceRangeQuotaList": [{
+      "goodsId": 330618148,
+      "onceQuota": 200,
+      "dailyQuota": 99999,
+      "priceRangeMin":38.00,
+      "priceRangeMax":40.50
+    },{
+      "goodsId": 137957355,
+      "onceQuota": 100,
+      "dailyQuota": 99999,
+      "priceRangeMin": 45,
+      "priceRangeMax": 47
+    },{
+      "goodsId": 137957355,
+      "onceQuota": 100,
+      "dailyQuota": 99999,
+      "priceRangeMin": 40,
+      "priceRangeMax": 50
+    }]
+  }
+}
+
+定向投放：
+{
+  "activityParametersVO": {
+    "agentCode": "zskx_fs",
+    "activityDate":"2018-06-30",
+    "activityId": 6393166501142081536,
+    "activityType": "specialOffer",
+    "full" : 100,
+    "unifiedTargetCostRatio":0.01,
+    "targetCost": 100,
+    "categoryIdList": [
+      73,68,65
+    ],
+    "brandList": [
+     "王老吉","娃哈哈" ,"康师傅","泰奇","东鹏","红牛","怡宝","统一","伊利","可口可乐"
+    ],
+    "skuNumber": 5,
+    "threwInOtherActivitiesGoodsIdList":[137957352,137957331]
+  },
+  "activityConfigVO": {
+    "activityThemeList": ["秒杀","神价格","限时秒杀"],
+    "timesNotInSameActivityTheme": 3,
+    "daysNotInSameActivityTheme": 3,
+    "timesDaysInSameActivityThemeLogicFlag": 1,
+    "checkPoints": [0.20,0.60,0.80,1.00],
+    "safeBehindDifference": 0.12,
+    "safeBeyondDifference": 0.20,
+    "topN": 30,
+    "goodsPriceRangeQuotaList": [{
+      "goodsId": 330618148,
+      "onceQuota": 200,
+      "dailyQuota": 99999,
+      "priceRangeMin":38.00,
+      "priceRangeMax":40.50
+    },{
+      "goodsId": 137957355,
+      "onceQuota": 100,
+      "dailyQuota": 99999,
+      "priceRangeMin": 45,
+      "priceRangeMax": 47
+    },{
+      "goodsId": 137957355,
+      "onceQuota": 100,
+      "dailyQuota": 99999,
+      "priceRangeMin": 40,
+      "priceRangeMax": 50
+    }]
+  }
+}
+
+查询商品预测销量：
+http://101.236.57.165:8870/api/topn-service/goods/query/getGoodsForecastSales?goodsId=137957355&activityDate=2018-06-30 00:00:00&promotionPrice=10
