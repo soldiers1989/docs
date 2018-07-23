@@ -18,7 +18,7 @@ url=jdbc:mysql://114.215.28.111:27384/platform_data?useUnicode=true&zeroDateTime
 username=zskx_hive
 password=CfAJoWPcq6pMBg8O
 
-data-test-old：
+测试环境数据库：
 外网IP：
 101.236.43.92
 内网IP：
@@ -28,7 +28,7 @@ username=adminroot
 password=fD$X@2aDb4YoxyjE
 
 
-data-test-new：
+新测试环境数据库：
 通过中转机访问：101.236.55.211   22349
 172.16.84.233  新数据库地址，程序上填这个，访问的话通过中转机:   
 username=adminroot
