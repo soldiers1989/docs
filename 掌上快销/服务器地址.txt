@@ -22,15 +22,16 @@ data-test-old：
 外网IP：
 101.236.43.92
 内网IP：
-172.16.58.24
+172.16.66.36 3306
 通过中转机访问，IP:101.236.55.211   端口：33513
 username=adminroot
 password=fD$X@2aDb4YoxyjE
 
 
 data-test-new：
+内网IP：
+172.16.66.35 3306
 通过中转机访问：101.236.55.211   22349
-172.16.84.233  新数据库地址，程序上填这个，访问的话通过中转机:   
 username=adminroot
 password=5H3M4Cb6@W^ntPK6
 
