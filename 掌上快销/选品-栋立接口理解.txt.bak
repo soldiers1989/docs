@@ -1,9 +1,11 @@
-1.【站点】【全品类】【分时】【预测和实际】销量：
+Redis数据：
+
+1.【站点】【全品类】【分时】【预测和实际】销量（对应左上角的全品类实时销量的趋势图）：
 	【每个整点】或【每个检查点】都有一个预测值和实际值。
 	预测值的key：auto-put:agent-all-goods-sale:2018:07:19:zskx_fs:forecast
 	实际值的key：auto-put:agent-all-goods-sale:2018:07:19:zskx_fs:fact
 
-2.【站点】【TOPN商品】【分时】【预测和实际】销量：
+2.【站点】【TOPN商品】【分时】【预测和实际】销量（对应右上角的TOP商品实时销量的趋势图）：
 	【每个整点】或【每个检查点】都有一个预测值和实际值。
 	预测值的key：auto-put:agent-top-goods-sale:2018:07:19:zskx_fs:forecast
 	实际值的key：auto-put:agent-top-goods-sale:2018:07:19:zskx_fs:fact
@@ -14,7 +16,22 @@
 
 4.【TOPN商品】【每天】【分时】【预测和实际】销量和售卖数量
 	【每个整点】或【每个检查点】都有一个预测值和实际值。
-	auto-put:single-top-goods-sale:2018:07:20:137957222:forecast
+	预测值的key：auto-put:single-top-goods-sale:2018:07:20:137957222:forecast
 	（PS:137957222是商品ID）
+
+5.【站点】【每月】【TOP商品列表】
+	auto-put:agent-sale-first-n-goods:2018:7:zskx_fs
+
+6.每个【TOP商品】【每天】的销售数量（单位：个）
+	auto-put:single-top-goods-sale-quantity:2018:07:02
+
+7.每个【TOP商品】【每天】的【预测销量】
+	auto-put:single-top-goods-sale:{date}:{goodsId}:forecast 
+
+8.每个【TOP商品】【每天】【每个活动】的【实际销量】
+	auto-put:single-top-goods-sale:{date}:{goodsId}:{activityId}:fact
+
+9.
+	auto-put:single-top-goods-sale:{0}:{1}:{2}:fact
 
 2.当天检查点更新，会通知实时流，将新的检查点的分时预测销量和实际销量，重新写入Redis中
