@@ -108,3 +108,85 @@ Redis数据：
 									
 该站点，投放当天的【TOP商品实际投入费用】= 该站点，投放当天的【每个TOP商品原价*实际售卖数量 之和】 * 该站点，投放当天的【TOP商品实际投入费比】
 （快捷算法）
+
+
+举例：
+		A            B
+	定价：1.6            4.6
+     售卖数量：10            20
+	原价：2	             5
+
+该站点，投放当天的【TOP商品实际投入费比】 = 1 - (1.6*10 + 4.6*20) / (2*10 + 5*20) = 1 - 108 / 120 = 0.1
+该站点，投放当天的【TOP商品实际投入费用】 = 120 * 0.1 = 12
+
+13.获取某站点，某个活动，指定TOP商品ID列表的预测销量和实际销量 -----【TOP商品级别的预测销量和实际销量】
+接口：/api/topn-service/goodsSale/topGoodsSale
+参数：
+{
+    "activityId":111, // 活动id 
+    "goodsIdList": [1,2,3], //商品ids,如果传某一个站点下所有参加活动的top商品的id列表，就是获取该站点下所有参加活动的top商品的的实际销量和预测销量
+    "date": "2018-06-19"
+}
+返回：
+{
+    "data":[{
+        "goodsId":1,//商品id
+        "factSales":2000.55,//实际销量，如果是选品前的展示，因为活动还没有开始，所以实际销量会为-1
+        "forecastSales":2000.4//预测销量
+    }],
+    "code":200,
+    "desc":"成功"
+}
+
+14.获取某站点，指定活动ID列表的TOP商品的预测销量和实际销量 -----【TOP商品级别的预测销量和实际销量】
+接口：/api/topn-service/goodsSale/activityTopGoodsSale
+参数：
+{
+    "activityIdList": [1,2,3],//活动id列表
+    "topType" : "fixedTop", // value 可以是 fixedTop 或 orientationTop, 可以不传，不传就是查固定+定向的
+    "date": "2018-06-19"
+}
+返回：
+{
+    "data":[{
+        "activityId":1, //活动id
+        "goodsId":1, //商品id
+        "factSales":2000.55, //实际销售额
+        "forecastSales":2000.4 //预测销售额
+    }],
+    "code":200,
+    "desc":"成功"
+}
+
+15.获取某站点，指定活动ID列表的实际费比
+接口：/api/topn-service/goodsSale/activityFactCostRatio
+参数：
+{
+    "activityList": [{
+        "activityId": 123, // 在此列表中可以重复
+        "topType" : "fixedTop" // value 可以是 fixedTop 或 orientationTop, 必须传
+    },{
+        "activityId": 123,
+        "topType" : "orientationTop"
+    }],//活动列表
+    "date": "2018-06-19"
+}
+返回：
+{
+    "data":[{
+        "activityId": 1, //活动id
+        "topType" : "fixedTop", // value 是 fixedTop 或 orientationTop
+        "factCostRatio": 0.001 //实际费比
+    }],
+    "code":200,
+    "desc":"成功"
+}
+
+16.
+2个固定投放之间，不能关联同一个活动；
+2个定向投放之间，不能关联同一个活动；
+但1个固定和1个定向，可以关联同一个活动；
+
+
+
+

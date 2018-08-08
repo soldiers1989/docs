@@ -48,3 +48,6 @@ IP:10.45.227.75
 
 新测试环境（要连上zskx-01-ap的wifi）
 外网IP：101.236.57.165 端口：33984  root密码：1qaz@3edc
+
+datax：
+在126服务器的/home/hadoop/web/datax/job/rds/
