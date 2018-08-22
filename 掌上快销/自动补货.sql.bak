@@ -16,7 +16,7 @@ GROUP BY
 	tsbd.goods_id 
 
 -- 每个站点，每个商品每一天的销售数量
--- 只保留2个月
+-- 只保留2个星期数据
 SELECT
 	tsb.agent_code,
 	tsbd.goods_id,
