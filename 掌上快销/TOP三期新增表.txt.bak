@@ -1,0 +1,14 @@
+t_goods_sales_cost_record
+t_agent_predict_hour_sale_percent
+t_target_record  1
+t_agent_biz_region 1
+
+laimi_activity:
+t_activity_item_goods
+t_top_settings_goods_quota
+t_top_settings_launch_history
+t_top_settings_launch
+t_top_region_unified_config
+t_top_activity_cancel_quota_history
+
+newtest有test没有的表
