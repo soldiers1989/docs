@@ -1,0 +1,11 @@
+platform_data-platform_data-t_sales_bill
+platform_data-platform_data-t_sales_bill_detail
+
+platform_data-platform_data-t_sales_bill:
+
+{"store_title":"应家小超","receive_contactor":"陈老板","county":"惠城区","source":"zskx","receive_id":"220134","last_updated_by":"0","province":"广东","__database":"platform_data","is_send_create_note":"0","__type":"update","bill_type":"bill_normal","customer_sign_picture":"","agent_code":"zskx_hz","customer_code":"","bill_id":"8440887","refund_status":"no_refund","creator_type":"store","customer_title":"应家小超","pay_total":"1869.7","creation_date":"2018-09-30 13:52:07","cs_bill_id":"","created_by":"132191","version":"2.34.0","pay_time":"","export_count":"0","org_id":"0","refund_time":"","employee_id":"0","district":"","pay_reconciliation_date":"","__exec_time":1538638939000,"supplier_code":"","receive_contact_info":"18924107195","status":"submit","wms_status":"","is_from_default_price_set":"1","code":"XS-20180930-160","city":"惠州","pay_reconciliation":"N","pay_reconciliation_by":"","original_total":"1946.5","official_emp_id":"489862","remark":"","total":"1892.7","pay_status":"unsubmit","decrease_amount":"0.0","sale_date":"2018-09-30 13:52:07","offline_pay_status":"","client":"android.store.client","store_name":"应家小超","pay_type":"cod","inv_id":"0","receive_address":"和畅四路TCL大门口对面","last_update_date":"2018-10-04 15:42:19","store_id":"41283","coupon_amount":"23.0","pay_by":"","cs_last_update_date":"2018-09-30 13:52:07","refund_reconciliation":"","__table":"t_sales_bill","cs_code":"","tms_status":"incar","customer_id":"0","__destination":"platform_data","use_balance":"0.0"}
+
+platform_data-platform_data-t_sales_bill_detail:
+
+{"bill_id":"8446054","short_amount":"0","original_price":"58.5","amount":"1","order_unit":"箱","goods_id":"292432340","detail_id":"38574013","cs_detail_id":"","with_accumulation":"1","__table":"t_sales_bill_detail","__database":"platform_data","price":"56.3","order_amount":"1.0","is_free":"0","activity_type":"specialOffer","__type":"insert","activity_id":"6450027801553670144","__exec_time":1538653230000,"set_id":"","agent_code":"zskx_zj","__destination":"platform_data","seq":"3","cost_price":"0.0"}
+
