@@ -1,0 +1,57 @@
+SELECT
+	round(
+		(
+			(
+				count( * ) - (
+					ifnull( sum( tmp.satisfaction_bill ), 0 ) + ifnull( sum( tmp.verySatisfaction_bill ), 0 ) + ifnull( sum( tmp.unsatisfied_bill ), 0 ) 
+				) + ifnull( sum( tmp.satisfaction_bill ), 0 ) 
+			) * 60 + ifnull( sum( tmp.verySatisfaction_bill ), 0 ) * 100 
+		) / count( * ),
+		2 
+	) score,
+	ifnull( count( * ), 0 ) monthCountBill,
+	ifnull( sum( tmp.satisfaction_bill ), 0 ) satisfactionBill,
+	ifnull( sum( tmp.verySatisfaction_bill ), 0 ) verySatisfactionBill,
+	ifnull( sum( unsatisfied_bill ), 0 ) unsatisfiedBill 
+FROM
+	t_tms_order a
+	LEFT JOIN t_tms_vehicle_plan b ON a.plan_id = b.id
+	LEFT JOIN t_driver c ON b.driver_id = c.id
+	LEFT JOIN (
+	SELECT
+		d.bill_id,
+		YEAR ( d.feedback_time ) year_time,
+		MONTH ( d.feedback_time ) month_time,
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'satisfied' THEN '1' ELSE '0' END ) satisfaction_bill,
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'verySatisfied' THEN '1' ELSE '0' END ) verySatisfaction_bill,
+		sum( CASE WHEN e.`type` = 'logistics' AND e.`appraise` = 'unsatisfied' THEN '1' ELSE '0' END ) unsatisfied_bill 
+	FROM
+		t_driver c1
+		LEFT JOIN t_tms_vehicle_plan b1 ON b1.driver_id = c1.id
+		LEFT JOIN t_tms_order a1 ON a1.plan_id = b1.id
+		LEFT JOIN t_appraise_feedback d ON a1.bill_id = d.`bill_id`
+		LEFT JOIN t_appraise_feedback_info e ON d.appraise_id = e.appraise_id 
+	WHERE
+		1 = 1 
+		AND c1.id = 2027 
+		AND a1.order_status = 'sent' 
+		AND a1.bill_type = 'FHD' 
+	GROUP BY
+		d.bill_id,
+		YEAR ( d.feedback_time ),
+		MONTH ( d.feedback_time ) 
+	) tmp ON a.bill_id = tmp.bill_id 
+	AND tmp.year_time = YEAR ( b.last_update_date ) 
+	AND tmp.month_time = MONTH ( b.last_update_date )
+	LEFT JOIN t_store_biz_region tmp2 ON a.store_id = tmp2.store_id 
+WHERE
+	c.NAME IS NOT NULL 
+	AND a.bill_type = 'FHD' 
+	AND a.order_status = 'sent' 
+	AND c.id = 2027 
+	AND YEAR ( b.count_bonus_time ) = 2018 
+	AND MONTH ( b.count_bonus_time ) = 10 
+GROUP BY
+	b.`driver_id`,
+	YEAR ( b.count_bonus_time ),
+	MONTH ( b.count_bonus_time )
