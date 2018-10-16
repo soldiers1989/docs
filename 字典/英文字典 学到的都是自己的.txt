@@ -133,3 +133,4 @@ under A 在A底部
 plug in 插入
 application 应用程序
 take 获取
+in case 如果
