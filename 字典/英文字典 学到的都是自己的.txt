@@ -134,3 +134,12 @@ plug in 插入
 application 应用程序
 take 获取
 in case 如果
+coarse grained 粗粒度的 [kɔ:s] [greɪnd]
+milliseconds 毫秒
+fetch 从某个地方拿取（强调从某个地方拿过来）
+devide 切分
+bucket 桶
+specify 指定 [ˈspesɪfaɪ]
+bunch 一群
+side 端
+map side map端
