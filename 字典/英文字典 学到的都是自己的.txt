@@ -23,7 +23,7 @@ set 组
 aggregation 聚合
 combine 组合
 generic 通用
-turn into 转换
+turn A into B 将A转换成B
 type 类型
 list 列表
 in addition 此外
@@ -143,3 +143,20 @@ specify 指定 [ˈspesɪfaɪ]
 bunch 一群
 side 端
 map side map端
+register 注册
+complete 完成
+as 为（第二声）
+given 给定的
+get 获取
+consolidate 合并 [kənˈsɒlɪdeɪt]
+wrap 包装
+compress 压缩
+configuration 配置
+note 注意
+backwards 向后
+compatibility 兼容性 [kəmˌpætəˈbɪləti]
+allocate 分配 [ˈæləkeɪt]
+lazy 懒
+reference 引用
+
+
