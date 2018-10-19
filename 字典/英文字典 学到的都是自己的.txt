@@ -127,6 +127,7 @@ shuffle 打乱
 place 放置
 build 构建
 synchronized 同步
+asynchronized 异步
 backend 后端，后台
 interface 接口
 under A 在A底部
@@ -158,5 +159,61 @@ compatibility 兼容性 [kəmˌpætəˈbɪləti]
 allocate 分配 [ˈæləkeɪt]
 lazy 懒
 reference 引用
+RAM 内存（random access memory，随机访问内存）
+ROM 只读内存（Read-Only memory，只读内存）
+retrieve 检索 [rɪˈtri:v] 
+put and retrieve 写和读，读写
+put 写
+remote 远程
+store 存储
+storage 存储
+various 各个
+off-heap 堆外
+initialize 初始化
+constructor 构造函数，构造器
+be ... 被...
+endpoint 端点
+service 服务
+thread 线程
+potential 可能 [pəˈtenʃl]
+accord to 根据
+replicate 复制
+effect 有效
+refer to 指的是
+actual 实际
+handle 处理
+behavior 行为
+alternate 替代的 [ɔ:lˈtɜ:nət]
+correct 正确
+drop 投进去，丢弃
+atomic 原子的 [əˈtɒmɪk]
+release 释放
+optimize 优化 [ˈɒptɪmaɪz]
+lock 锁
+entries 条目
+once 一旦
+double ... 重复...
+count 计算
+free up 释放
+more 更多的
+space 空间
+parallel 并行的 [ˈpærəlel]
+proceed 进行 [prəˈsi:d]
+either A or B 要么做A，要么做B，A和B中一定要选一件做
+applicable 适用的
+otherwise 除此以外
+implementor 实现者 [ɪm'plɪmentə]
+acquire 获取 [əˈkwaɪə(r)]
+hold 持有
+character 字符 [ˈkærəktə(r)]
+represent 代理 [ˌreprɪˈzent]
+sequence 序列
+necessary 必要的 [ˈnesəsəri]
+since 因为
+mutable 可变的
+immutable 不可变的
+
+
+
 
 
