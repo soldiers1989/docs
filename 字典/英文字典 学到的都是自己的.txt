@@ -1,5 +1,6 @@
 apply 应用
 function 函数
+functional 功能性的，函数式的
 element 元素
 one-element 单元素
 launch 启动
@@ -27,6 +28,7 @@ turn A into B 将A转换成B
 type 类型
 list 列表
 in addition 此外
+in addition to ... 除了...
 user 用户
 control 控制
 output 输出
@@ -35,15 +37,16 @@ whether to 是否去
 perform 执行
 produce 生成
 multiple 多个
-item 项目
-A for B “对”A的B...
+item 项目，元素 [ˈaɪtəm]
+for ... 用于...
 Interrupt 中断
 Interruptible 可中断的
-Iterator 迭代器
+iterator 迭代器
+iterative 迭代式的 ['ɪtərətɪv]
 indicate 表示
 which A unless B 除非B否则A
 reduce 减少
-by 按...
+by 按...，通过...
 self 自己
 object 对象
 be used to 被用于
@@ -60,14 +63,14 @@ prevent 防止
 overflow 溢出
 first 首先
 operation 操作
-available 可用
+available 可用的
 call 调用
 pending 等待中的
 figure out 找出 [ˈfiɡə aut]
 index 索引
 A to B 要B的A
 internal 内部的
-accumulator 累加器
+accumulator 累加器 [əˈkju:mjəleɪtə(r)]
 reset 覆盖
 partial 部分
 post 发布
@@ -88,7 +91,7 @@ through 通过
 access 访问
 careful 小心
 visit 访问
-explore 探索
+explore 探索，检索
 exponential 指数的 [ˌekspəˈnenʃl]
 pick 选择
 narrow 窄
@@ -141,12 +144,14 @@ fetch 从某个地方拿取（强调从某个地方拿过来）
 devide 切分
 bucket 桶
 specify 指定 [ˈspesɪfaɪ]
+specific 特定的
 bunch 一群
 side 端
 map side map端
 register 注册
-complete 完成
-as 为（第二声）
+complete 完成 vt
+complete 完整的 n
+as 作为（第二声）
 given 给定的
 get 获取
 consolidate 合并 [kənˈsɒlɪdeɪt]
@@ -158,7 +163,8 @@ backwards 向后
 compatibility 兼容性 [kəmˌpætəˈbɪləti]
 allocate 分配 [ˈæləkeɪt]
 lazy 懒
-reference 引用
+reference 引用 [ˈrefrəns] v
+reference 参考 n
 RAM 内存（random access memory，随机访问内存）
 ROM 只读内存（Read-Only memory，只读内存）
 retrieve 检索 [rɪˈtri:v] 
@@ -170,6 +176,7 @@ storage 存储
 various 各个
 off-heap 堆外
 initialize 初始化
+construct 构造
 constructor 构造函数，构造器
 be ... 被...
 endpoint 端点
@@ -199,14 +206,14 @@ more 更多的
 space 空间
 parallel 并行的 [ˈpærəlel]
 proceed 进行 [prəˈsi:d]
-either A or B 要么做A，要么做B，A和B中一定要选一件做
+either A or B 要么做A，要么做B，A和B中一定要选一件做 [ˈaɪðə(r)]
 applicable 适用的
 otherwise 除此以外
 implementor 实现者 [ɪm'plɪmentə]
 acquire 获取 [əˈkwaɪə(r)]
 hold 持有
 character 字符 [ˈkærəktə(r)]
-represent 引用，代理 [ˌreprɪˈzent]
+represent 引用，代理，表示 [ˌreprɪˈzent]
 sequence 序列
 necessary 必要的 [ˈnesəsəri]
 since 因为
@@ -251,9 +258,208 @@ be part of B B的一部分
 database 数据库
 minor 未成年的 [ˈmaɪnə(r)]
 major 主要的 [ˈmeɪdʒə(r)]
-
-
-
-
+resilient 弹性的 [rɪˈzɪliənt]
+distributed 分布式的 [dɪs'trɪbju:tɪd]
+dataset 数据集
+performance 性能
+achieve 达到
+batch 批次
+stream 流
+physical 物理的 [ˈfɪzɪkl]
+execute 执行
+execution 执行
+engine 引擎
+ease 轻松
+over 超过
+over time 随着时间
+interact with ... 和...交互 [ˌɪntərˈækt]
+interactive 交互式的 [ˌɪntərˈæktɪv]
+generality 概论，大概的结论 [ˌdʒenəˈræləti]
+complex 复杂的 [ˈkɒmpleks]
+analyze 分析
+library 类库 [ˈlaɪbrəri]
+power 支持
+powerful 强大的
+seamless 无缝的 [ˈsi:mləs]
+run 运行
+everywhere 到处
+standalone 独立 ['stændəˌləʊn]
+cloud 云端
+diverse 各色各样的 [daɪˈvɜ:s]
+data source 数据源
+tens of 数十个
+hundreds of 数百个
+purpose 目的
+high-level 高级
+graph 图形，图表
+rich 丰富的
+structure 结构 [ˈstrʌktʃə(r)]
+structured 结构化的
+process 处理 [ˈprəʊses]
+project 项目
+website 网站
+client 客户端
+pre-packaged 预打包的，已经编译好并打成包
+a handful of 少数的 [ˈhændful]
+popular 流行的
+free 免费
+binary 二进制
+any 任何的
+classpath 类路径
+augment 增加 [ɔ:gˈment]
+coordinate 坐标 [kəʊ'ɔ:dɪneɪt]
+install 安装
+visit 访问
+UNIX-like 类UNIX
+point to 指向
+compatible 兼容的 [kəmˈpætəbl]
+come with 附带，来的时候带着
+sample  样本，示例
+example 例子
+directory 目录
+top-level 顶级的
+behind the scenes 在后台 ['si:nz]
+invoke 调用 [ɪnˈvəʊk]
+great way 好方式
+option 选项
+thread 线程
+start 开始
+full 完整的
+interpreter 解释器 [ɪnˈtɜ:prɪtə(r)]
+experimental 试验性的 [ɪkˌsperɪˈmentl]
+overview 概述
+explain 说明
+concept 概念 [ˈkɒnsept]
+conceptually 在概念上，... [kən'septʃʊəlɪ]
+itself 它自己
+simple 简单的
+deploy 部署
+programming 编程 [ˈprəʊgræmɪŋ]
+guide 指南
+external 外部的 [ɪkˈstɜ:nl]
+introduction 介绍
+where to Go from Here 从这里往哪里走
+tutorial 教程 [tju:ˈtɔ:riəl]
+show 展示
+follow 跟随
+follow along 跟着...
+following 后面的，下列的
+strongly-typed 强类型（对应弱类型）
+hood 罩
+under the hood 在底层
+recommend 推荐 [ˌrekəˈmend]
+switch to 切换到
+switch back and forth 来回切换
+as well as 以及
+tool 工具
+primary 主要的
+abstract [ˈæbstrækt]
+collection 集合
+called 被称作...
+such as 例如
+transform 转换
+Let’s 让我们
+make 创建，使
+number 数量
+subset 子集
+chain 链，串联 [tʃeɪn]
+compute 计算 v
+computation 计算 n
+map A to B 将A映射成B
+largest 最大的
+count 计数
+closure 闭包 [ˈkləʊʒə(r)]
+feature 特性
+declare 声明
+understand 理解
+easy 容易
+common 常见的
+flow 流
+also 还
+support 支持
+pull 拉取
+pull A into B 将A拉取到B
+wide 范围
+cache 缓存
+useful 有用的
+repeat 重复
+algorithm 算法 [ˈælgərɪðəm]
+arithmetic 算法 [əˈrɪθmətɪk]
+like 像
+silly 愚蠢的 [ˈsɪli]
+interesting 有趣的
+even 甚至
+stripe across 跨越 [straɪp]
+suppose 假设
+wish 希望
+write 编写
+in fact 实际上
+instead of 而不是
+extend 继承，拓展
+just 仅仅
+replace A with B 用B替换A
+finally 最后
+depend on 依赖于
+repository 仓库 [rɪˈpɒzətri]
+layout 布局 [ˈleɪaʊt]
+typical 典型的 [ˈtɪpɪkl]
+congratulation 祝贺 [kənˌgrætʃuˈleɪʃn]
+For 有关（强调For开头的语句）
+in-depth 深入的 [ˈinˈdepθ]
+component 组件 [kəmˈpəʊnənt]
+head to 转至
+consist of ... 由...组成 [kənˈsɪst]
+driver 驱动
+driver program 驱动程序
+ask A to 要求A去...
+persist 持久化
+efficiently 高效率地 [ɪ'fɪʃntlɪ]
+shared 共享的
+variable 变量 [ˈveəriəbl]
+by default 默认情况下
+ship 发送，运输（强调原本不在同一个地方，需要运输过去）
+each 每个
+between A and B 在A和B之间
+broadcast 广播 [ˈbrɔ:dkɑ:st]
+import 导入
+into A 进入A中
+explicit 显式的 [ɪkˈsplɪsɪt]
+essential 必要的 [ɪˈsenʃl]
+implicit 隐式的 [ɪmˈplɪsɪt]
+conversion 转换
+implicit conversion 隐式转换
+module 模块
+extra 额外的 [ˈekstrə]
+independent 独立的 [ˌɪndɪˈpendənt]
+express 表达
+unification 统一 [ˌju:nɪfɪ'keɪʃn]
+the most 最
+natural 自然的
+section 部分
+another 另一个
+benefit 优势，优点 [ˈbenɪfɪt]
+ability 能力
+manipulate 操作 [məˈnɪpjuleɪt]
+manipulation 操作 [mə.nɪpjə'leɪʃ(ə)n]
+due to 由于
+dynamic 动态的 [daɪˈnæmɪk]
+nature 本质
+naturally 自然地
+organize 组织 [ˈɔ:gənaɪz]
+relational 关系型的
+alias 别名 [ˈeɪliəs]
+entry 入口
+entry point 入口点
+builtin 内置的 ['bɪltɪn]
+display 显示
+aka Also Known As的缩写，又名
+domain 域
+above 以上
+mention 提到，提及到
+contrast 对比 [ˈkɒntrɑ:st]
+schema 结构
+scope 范围
+disappear 消失
+terminate 终止 [ˈtɜ:mɪneɪt]
 
 
