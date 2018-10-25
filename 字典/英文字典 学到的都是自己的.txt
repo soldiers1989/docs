@@ -36,6 +36,7 @@ and 以及
 whether to 是否去
 perform 执行
 produce 生成
+production 生产
 multiple 多个
 item 项目，元素 [ˈaɪtəm]
 for ... 用于...
@@ -151,6 +152,7 @@ map side map端
 register 注册
 complete 完成 vt
 complete 完整的 n
+completely 完全地 adv
 as 作为（第二声）
 given 给定的
 get 获取
@@ -217,7 +219,7 @@ represent 引用，代理，表示 [ˌreprɪˈzent]
 sequence 序列
 necessary 必要的 [ˈnesəsəri]
 since 因为
-mutable 可变的
+mutable 可变的 [ˈmju:təbl]
 immutable 不可变的
 getNationwideTop
 argument 参数
@@ -296,7 +298,8 @@ rich 丰富的
 structure 结构 [ˈstrʌktʃə(r)]
 structured 结构化的
 process 处理 [ˈprəʊses]
-project 项目
+project 针对 vt
+project 项目 n
 website 网站
 client 客户端
 pre-packaged 预打包的，已经编译好并打成包
@@ -326,6 +329,7 @@ thread 线程
 start 开始
 full 完整的
 interpreter 解释器 [ɪnˈtɜ:prɪtə(r)]
+experiment 试验 v,n
 experimental 试验性的 [ɪkˌsperɪˈmentl]
 overview 概述
 explain 说明
@@ -335,6 +339,7 @@ itself 它自己
 simple 简单的
 deploy 部署
 programming 编程 [ˈprəʊgræmɪŋ]
+programmatic 编程的 ˌprəʊgrəˈmætɪk]
 guide 指南
 external 外部的 [ɪkˈstɜ:nl]
 introduction 介绍
@@ -388,7 +393,9 @@ arithmetic 算法 [əˈrɪθmətɪk]
 like 像
 silly 愚蠢的 [ˈsɪli]
 interesting 有趣的
-even 甚至
+even 均匀的 adj
+even 甚至 adv
+evenly 均匀地 adv
 stripe across 跨越 [straɪp]
 suppose 假设
 wish 希望
@@ -448,7 +455,7 @@ naturally 自然地
 organize 组织 [ˈɔ:gənaɪz]
 relational 关系型的
 alias 别名 [ˈeɪliəs]
-entry 入口
+entry 入口 [ˈentri]
 entry point 入口点
 builtin 内置的 ['bɪltɪn]
 display 显示
@@ -461,5 +468,122 @@ schema 结构
 scope 范围
 disappear 消失
 terminate 终止 [ˈtɜ:mɪneɪt]
-
-
+temporary 临时的
+alive 活着的
+global 全局的
+tie to 绑定 [taɪ]
+e.g. 例如，比方说 [ˌi: ˈdʒi:]
+qualify 限定 [ˈkwɒlɪfaɪ]
+specialize 专攻 [ˈspeʃəlaɪz]
+specialized 专门的 [ˈspeʃəlaɪzd]
+encode 编码（编码就是序列化，将xxx转换成二进制码）
+transmit 传输
+While ... 虽然...，但（强调While开头）
+both A and B A和B
+responsible 有责任的 [rɪˈspɒnsəbl]
+generate 生成
+format 格式
+hash 散列
+interoperate with ... 和...交互 [ˌɪntə'ɒpəreɪt]
+reflection 反射 [rɪˈflekʃn]
+infer 推断
+lead to 导致
+approach 接近 vt
+approach 途径，方法 n
+concise 简洁的 [kənˈsaɪs]
+already 已经
+apply A to B 将A应用于B
+verbose 冗长的 [vɜ:ˈbəʊs]
+python 蟒蛇
+automatically 自动地 [ˌɔ:tə'mætɪklɪ]
+case 样例
+nest 嵌套 [nest]
+statement 语句
+sql statement sql语句
+ahead of time 提前
+parse 解析
+match 匹配
+normal 正常的
+etc 等等 ['ɪt'setərə, et-]
+design 设计
+average 平均值 [ˈævərɪdʒ]
+data type 数据类型
+identical 相同的 [aɪˈdentɪkl]
+opportunity 机会 [ˌɒpəˈtju:nəti]
+update 更新
+calculate 计算 [ˈkælkjuleɪt]
+revolve around 围绕 [rɪˈvɒlv]
+satisfy 满足 [ˈsætɪsfaɪ]
+intermediate 中间的 [ˌɪntəˈmi:diət]
+lineage 血缘 [ˈlɪniɪdʒ]
+against 针对
+gigabytes 十亿字节，千兆字节
+from the ground up 从头开始 [frɔm ðə ɡraund ʌp]
+warehouse 仓库 [ˈweəhaʊs]
+commercial 商业的 [kəˈmɜ:ʃl]
+scale to 规模拓展到 [skeɪl]
+organization 组织
+live 住
+proprietary 专有的 [prəˈpraɪətri]
+single 单个
+expect 期望
+response time 响应时间
+break 打破
+choice 选择
+solution 解决方案
+hardware 硬件
+excessive 过多的 [ɪkˈsesɪv]
+employee 员工
+daily 每天
+petabyte PB
+internet 互联网
+leading 领先的
+lead engineer 首席工程师
+engineer 工程师
+amazing 了不起的，很棒的
+a few day 几天
+in most 大多数
+an order of magnitude 一个数量级，一个数量级数 [ˈmægnɪtju:d]
+a lot of 很多
+excited 兴奋的
+way 方式
+gain 获取
+insight 眼光，慧眼
+gain insight 了解
+diagnose 诊断 [ˈdaɪəgnəʊz]
+encounter 遇到 [ɪnˈkaʊntə(r)]
+so far 到目前为止
+rock 石头
+solid 结实的 [ˈsɒlɪd]
+extremely 非常 [ɪkˈstri:mli]
+hoc 临时的
+coordinate 协调 
+connect 连接
+pluggable 可插拔的 [plʌgəbəl]
+vary 变化 [ˈveəri]
+embedded 嵌入的 [ɪm'bedɪd]
+mode 模式
+metastore 元数据仓库
+thus 因此
+requirement 要求
+heterogeneous 各种各样的 [ˌhetərəˈdʒi:niəs]
+so that 目的是，以便
+administrator 管理员
+perspective 远景 [pəˈspektɪv]
+respectively 分别地 [rɪˈspektɪvli]
+interval 间隔
+controller 控制器
+rate 速率
+attach 附加
+among 其中 [əˈmʌŋ]
+overall 全部的
+unique 独一无二的
+PV page view，页面访问量
+UV unique visitor，独一无二的访客量
+QPS queries per second，每秒能处理的查询次数
+RPS requests per second，每秒能处理的请求次数
+dashboard 仪表盘，仪表板
+property 属性
+rather than 而不是
+redundant 多余的 [rɪˈdʌndənt]
+parentheses 圆括号 [pəˈrenθəsi:z]
