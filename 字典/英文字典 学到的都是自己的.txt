@@ -181,7 +181,7 @@ initialize 初始化
 construct 构造
 constructor 构造函数，构造器
 be ... 被...
-endpoint 端点
+endpoint 端点，可以理解为通信时用的电话机，用endpoint可以脱离底层技术（如Actor）的语义，以后换底层技术，还是用endpoint这个名字就可以
 service 服务
 thread 线程
 potential 可能 [pəˈtenʃl]
@@ -527,6 +527,7 @@ live 住
 proprietary 专有的 [prəˈpraɪətri]
 single 单个
 expect 期望
+unexpected 意外的
 response time 响应时间
 break 打破
 choice 选择
@@ -587,3 +588,9 @@ property 属性
 rather than 而不是
 redundant 多余的 [rɪˈdʌndənt]
 parentheses 圆括号 [pəˈrenθəsi:z]
+identity 标识，身份 [aɪˈdentəti]
+attempt to 尝试去
+incorrect 不正确的 [ˌɪnkəˈrekt]
+timer 定时器，每隔一段时间就去执行，和线程不同，线程是不停的执行
+
+
