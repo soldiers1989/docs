@@ -158,7 +158,8 @@ given 给定的
 get 获取
 consolidate 合并 [kənˈsɒlɪdeɪt]
 wrap 包装
-compress 压缩
+compress 压缩 vt
+compression 压缩 n
 configuration 配置
 note 注意
 backwards 向后
@@ -264,6 +265,8 @@ resilient 弹性的 [rɪˈzɪliənt]
 distributed 分布式的 [dɪs'trɪbju:tɪd]
 dataset 数据集
 performance 性能
+tune 调优 [tju:n]
+performance tuning 性能调优
 achieve 达到
 batch 批次
 stream 流
@@ -522,6 +525,7 @@ from the ground up 从头开始 [frɔm ðə ɡraund ʌp]
 warehouse 仓库 [ˈweəhaʊs]
 commercial 商业的 [kəˈmɜ:ʃl]
 scale to 规模拓展到 [skeɪl]
+scalable 可拓展的 ['skeɪləbl]
 organization 组织
 live 住
 proprietary 专有的 [prəˈpraɪətri]
@@ -592,5 +596,30 @@ identity 标识，身份 [aɪˈdentəti]
 attempt to 尝试去
 incorrect 不正确的 [ˌɪnkəˈrekt]
 timer 定时器，每隔一段时间就去执行，和线程不同，线程是不停的执行
-
-
+untyped 弱类型的
+type-safety 类型安全
+virtual 虚拟的
+visible 可见的 [ˈvɪzəbl]
+A be visible to B A对B可见
+primordial 原始的 [praɪˈmɔ:diəl]
+loader 加载器
+class loader 类加载器
+security 安全
+result ... 导致... vi
+convenient 方便的
+troubleshooting 故障排查
+workload 工作负载
+columnar 列式
+format 格式
+in-memory 内存中的
+minimize 最小化 [ˈmɪnɪmaɪz]
+usage 使用 n
+pressure 压力
+catalog 目录
+Beta 测试 [ˈbi:tə]
+fault 错误
+tolerant 容忍的 [ˈtɒlərənt]
+fault-tolerant 容错的
+take care of 负责，照顾
+incrementally 逐步地 adv
+continuously 连续不断地 [kən'tɪnjʊəslɪ]
