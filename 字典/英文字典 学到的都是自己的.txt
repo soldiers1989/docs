@@ -626,3 +626,8 @@ continuously 连续不断地 [kən'tɪnjʊəslɪ]
 intersect 交集
 except 差集
 assume 假设
+duplicate 重复的 [ˈdju:plɪkeɪt]
+obey 遵守 [əˈbeɪ]
+robot 机器人
+concurrent 并发的
+policy 策略 [ˈpɒləsi]
