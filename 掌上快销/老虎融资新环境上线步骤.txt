@@ -1,0 +1,16 @@
+1.web服务器申请（外网可访问）1 114.215.115.224 33984 root $GCig@$5tQ^!d@jl
+2.数据库服务器申请（外网可访问）1 
+内网：jdbcUrl: jdbc:mysql://rm-m5e16k1o1x7llxqlsi.mysql.rds.aliyuncs.com/laimi_ka?useUnicode=true&characterEncoding=UTF-8 
+外网：rm-m5e16k1o1x7llxqls.mysql.rds.aliyuncs.com
+    username: data
+    password: xaZ9CpLIJK6zcXZ
+3.web服务器域名申请 1 a.zskuaixiao.com
+4.BI（web和service），business-intelligence，eureka全部修改数据库和eureka地址 1
+5.搭BI（web和service），business-intelligence，eureka
+6.web服务器开放8000端口
+
+nohup java -Dhudson.util.ProcessTree.disable=true -jar -Xms2048M -Xmx2048M -Dspring.profiles.active=a /mnt/java/laimi-data-center-service/laimi-data-center-web/laimi-data-center-web-0.0.1-SNAPSHOT.jar &
+nohup java -Dhudson.util.ProcessTree.disable=true -jar -Xms2048M -Xmx2048M -Dspring.profiles.active=a /mnt/java/laimi-data-center-service/laimi-data-center-service/laimi-data-center-service-0.0.1-SNAPSHOT.jar &
+nohup java -jar /mnt/java/data-business-intelligence/business-intelligence/business-intelligence-1.0.0-SNAPSHOT.jar --spring.profiles.active=a -Xmx1024M -Xms1024M &
+nohup java -jar /mnt/java/shield-server/shield-server.jar --spring.profiles.active=a --spring.cloud.inetutils.ignored-interfaces=eth1 &
+
